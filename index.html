@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Pick &amp; Weiss Family — A History from Bohemia</title>
+<style>
+  :root {
+    --ink: #26221c;
+    --ink-soft: #5c554a;
+    --paper: #f7f3ea;
+    --paper-deep: #efe8d8;
+    --line: #d8cfbd;
+    --accent: #6f4e37;
+    --accent-deep: #4a3320;
+    --gold: #a8823f;
+    --rule: #c9bda3;
+    --shadow: rgba(60, 45, 25, 0.13);
+    --maxw: 760px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Iowan Old Style", Georgia, "Palatino Linotype", serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.75;
+    font-size: 1.06rem;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 5rem 1.5rem 3rem;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(168,130,63,0.10), transparent 60%),
+      var(--paper-deep);
+    border-bottom: 3px double var(--accent);
+  }
+  .hero .kicker {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 {
+    font-weight: normal;
+    font-size: 2.7rem;
+    line-height: 1.2;
+    margin: 0 auto 1rem;
+    max-width: 15ch;
+    color: var(--accent-deep);
+  }
+  .hero p {
+    font-style: italic;
+    color: var(--ink-soft);
+    max-width: 560px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+  }
+
+  /* Layout */
+  main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
+
+  /* Table of contents */
+  nav.toc {
+    max-width: var(--maxw);
+    margin: 3rem auto 1rem;
+    padding: 1.6rem 1.8rem;
+    background: #fffdf8;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    box-shadow: 0 2px 10px var(--shadow);
+  }
+  nav.toc h2 {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 0.8rem;
+  }
+  nav.toc ol { margin: 0; padding-left: 1.3rem; color: var(--accent-deep); }
+  nav.toc li { margin: 0.3rem 0; }
+  nav.toc a { color: var(--accent-deep); text-decoration: none; }
+  nav.toc a:hover { text-decoration: underline; }
+
+  /* Chapters */
+  section.chapter { margin: 3.5rem 0; }
+  section.chapter > .chap-num {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  section.chapter > h2 {
+    font-weight: normal;
+    font-size: 1.85rem;
+    color: var(--accent-deep);
+    margin: 0.2rem 0 0.4rem;
+    line-height: 1.25;
+  }
+  section.chapter > h2 + .place-era {
+    font-style: italic;
+    color: var(--accent);
+    margin: 0 0 1.3rem;
+    font-size: 0.98rem;
+  }
+  .chapter p { margin: 1rem 0; }
+  .chapter h3 {
+    font-weight: normal;
+    font-size: 1.25rem;
+    color: var(--accent-deep);
+    margin: 2rem 0 0.3rem;
+  }
+
+  .dropcap::first-letter {
+    font-size: 3.4rem;
+    line-height: 0.8;
+    float: left;
+    padding: 0.1em 0.12em 0 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* Pull quote */
+  blockquote {
+    margin: 1.8rem 0;
+    padding: 0.6rem 1.4rem;
+    border-left: 4px solid var(--gold);
+    font-style: italic;
+    color: var(--ink-soft);
+    background: rgba(168,130,63,0.05);
+  }
+  blockquote cite { display:block; font-style: normal; font-size: 0.85rem; margin-top: 0.5rem; color: var(--accent); }
+
+  /* Source citation superscripts */
+  sup.ref { font-size: 0.7em; }
+  sup.ref a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0 0.1em;
+  }
+  sup.ref a:hover { text-decoration: underline; }
+
+  /* Section divider */
+  .divider { text-align: center; color: var(--gold); margin: 3rem 0; font-size: 1.2rem; letter-spacing: 0.5em; }
+
+  /* Family tree */
+  .tree {
+    background: #fffdf8;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1.8rem;
+    margin: 2rem 0;
+    box-shadow: 0 2px 10px var(--shadow);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    overflow-x: auto;
+  }
+  .tree pre { margin: 0; color: var(--accent-deep); white-space: pre; font-family: "SF Mono","Menlo",monospace; font-size: 0.82rem; }
+
+  /* References list */
+  section.sources {
+    margin: 4rem 0 2rem;
+    padding-top: 2rem;
+    border-top: 3px double var(--accent);
+  }
+  section.sources h2 {
+    font-weight: normal;
+    font-size: 1.5rem;
+    color: var(--accent-deep);
+  }
+  section.sources ol { padding-left: 1.4rem; }
+  section.sources li {
+    margin: 0.7rem 0;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  section.sources li:target { background: rgba(168,130,63,0.14); border-radius: 3px; }
+  section.sources .archive { font-style: italic; color: var(--accent); }
+
+  footer {
+    text-align: center;
+    padding: 2.5rem 1.5rem 4rem;
+    color: var(--ink-soft);
+    font-size: 0.88rem;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    border-top: 1px solid var(--line);
+  }
+  footer .note { font-style: italic; max-width: 560px; margin: 0.8rem auto 0; }
+
+  @media (max-width: 560px) {
+    .hero h1 { font-size: 1.9rem; }
+    body { font-size: 1.02rem; }
+    section.chapter > h2 { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="kicker">A Family History</div>
+  <h1>The Pick &amp; Weiss Family</h1>
+  <p>From the Jewish communities of Bohemia and Silesia — a story of merchants and
+  railwaymen, of persecution and survival, told through the records they left behind.</p>
+</header>
+
+<main>
+
+  <nav class="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#origins">Origins in Bohemia</a></li>
+      <li><a href="#pick">The Pick Line — Lichtenstadt &amp; Karlsbad</a></li>
+      <li><a href="#weiss">The Weiss Line — Silesia &amp; Vienna</a></li>
+      <li><a href="#union">A Marriage of Two Worlds</a></li>
+      <li><a href="#persecution">Persecution &amp; Flight</a></li>
+      <li><a href="#deportation">Deportation</a></li>
+      <li><a href="#survival">A Child Alone — Survival &amp; a New Land</a></li>
+      <li><a href="#memory">Remembrance</a></li>
+      <li><a href="#tree">The Family Tree</a></li>
+      <li><a href="#sources">Sources &amp; References</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section class="chapter" id="origins">
+    <div class="chap-num">Chapter One</div>
+    <h2>Origins in Bohemia</h2>
+    <p class="place-era">The Kingdom of Bohemia, 18th–19th centuries</p>
+    <p class="dropcap">The Pick family belonged to the old Jewish communities of the Czech lands.
+    They appear in the historical record as early as the <strong>1793 Bohemian census</strong>, where a
+    Pick household — a wool trader, his wife and children — is recorded in the Jewish quarter
+    (Židovské Město) of Prague.<sup class="ref"><a href="#s1">1</a></sup> Whether by direct line or
+    by kinship, the name marks a family long rooted in Bohemia, generations before the events at the
+    heart of this history.</p>
+    <p>By the later nineteenth century the family had settled in the spa region of western Bohemia,
+    in the small town of <strong>Lichtenstadt</strong> — today Hroznětín — a short distance from the
+    famous spa city of Karlsbad (Karlovy Vary). It is there that the story comes into sharp focus.</p>
+  </section>
+
+  <div class="divider">✦</div>
+
+  <!-- 2 -->
+  <section class="chapter" id="pick">
+    <div class="chap-num">Chapter Two</div>
+    <h2>The Pick Line</h2>
+    <p class="place-era">Lichtenstadt &amp; Karlsbad, Bohemia · 1880s–1930s</p>
+    <p class="dropcap">At house number 34 in Lichtenstadt lived <strong>Sebald Pick</strong>, a
+    merchant (<em>Kaufmann</em>), and his wife <strong>Flora</strong>, née Wohl, who came from
+    Lobositz (Lovosice) in the Leitmeritz district. Theirs was a family touched early by loss: a
+    daughter, <strong>Fanni</strong>, died in 1880 at the age of six, and her burial was recorded in
+    the Jewish register of the community.<sup class="ref"><a href="#s2">2</a></sup></p>
+    <p>On <strong>22 June 1886</strong>, in the same house at Lichtenstadt no. 34, Sebald and Flora
+    had a son: <strong>Ezechiel Pick</strong>.<sup class="ref"><a href="#s3">3</a></sup> He would grow
+    up to be a merchant like his father, doing business in Hroznětín.</p>
+
+    <h3>A name, and the authorities who kept it</h3>
+    <p>Ezechiel's birth record carries an unusual and telling detail. At some point the second given
+    name <strong>"Mathias"</strong> was added, in brackets, beside his name. In 1906 the Imperial-Royal
+    Governor's Office in Prague ruled that this addition had been unauthorized.<sup class="ref"><a href="#s3">3</a></sup>
+    But the matter did not end there. On <strong>14 April 1931</strong>, the District Authority
+    (<em>Bezirkshauptmannschaft</em>) in Karlsbad — together with the Jewish registry authority —
+    formally recorded that the man registered as Ezechiel Pick <em>bears the given name Mathias</em>,
+    reconciling his civil and religious identity at last.<sup class="ref"><a href="#s3">3</a></sup></p>
+    <blockquote>
+      "The person registered here as Ezechiel Pick … bears the given name Mathias."
+      <cite>— Marginal note in the birth register, dated 14 April 1931, signed by the district rabbi</cite>
+    </blockquote>
+    <p>Beyond the personal detail, these entries tell us something important: across more than four
+    decades — 1886, 1906, 1931 — the civil and religious authorities of Austria-Hungary and then of
+    Czechoslovakia kept and maintained this family's records. Ezechiel Mathias Pick was a man known to
+    the state, embedded in the civil life of the Bohemian lands. It is why he appears in later documents
+    under both names, Ezechiel and Mathias — one person, one identity, twice recorded.</p>
+  </section>
+
+  <div class="divider">✦</div>
+
+  <!-- 3 -->
+  <section class="chapter" id="weiss">
+    <div class="chap-num">Chapter Three</div>
+    <h2>The Weiss Line</h2>
+    <p class="place-era">Freudenthal, Austrian Silesia &amp; Vienna · 1878–1913</p>
+    <p class="dropcap">While the Picks were merchants of the Bohemian spa country, the other side of the
+    family came from the railways and the imperial capital. <strong>Adolf Weiss</strong>, born in Krems
+    on the Danube in 1878, was a railway official — in time a <em>station master</em> of the
+    Imperial-Royal State Railways — stationed at <strong>Freudenthal</strong> (Bruntál) in Austrian
+    Silesia.<sup class="ref"><a href="#s4">4</a></sup></p>
+    <p>In Vienna, in 1902, he married <strong>Rosalie Prinz</strong>, born in the Ottakring district of
+    the city in 1879, a daughter of Nathan Prinz and Regina Schnitzer.<sup class="ref"><a href="#s5">5</a></sup>
+    The couple raised their family in Freudenthal, where the railway ran. Their children included
+    Leopold (1905), Gustav (1909), and a daughter born on <strong>3 February 1913</strong> —
+    <strong>Else</strong> (Elsa) Weiss.<sup class="ref"><a href="#s6">6</a></sup></p>
+    <p>It is Else who joins the two families together — and it is her brother <strong>Leopold</strong>
+    who, decades later, would become the keeper of their memory.</p>
+  </section>
+
+  <div class="divider">✦</div>
+
+  <!-- 4 -->
+  <section class="chapter" id="union">
+    <div class="chap-num">Chapter Four</div>
+    <h2>A Marriage of Two Worlds</h2>
+    <p class="place-era">Karlsbad · 1930s</p>
+    <p class="dropcap">Ezechiel Mathias Pick, the merchant of Hroznětín, married Else Weiss, the
+    station master's daughter from Silesia. On <strong>6 February 1937</strong>, in Karlsbad
+    (Karlovy Vary), their son was born: <strong>Liebermann Pick</strong>.<sup class="ref"><a href="#s7">7</a></sup></p>
+    <p>The birth was entered in the civil register, naming both parents — Ezechiel Pick, born 1886 in
+    Hroznětín, and Else née Weiss, born 1913 in Bruntál.<sup class="ref"><a href="#s7">7</a></sup> A
+    family of three, in a prosperous spa town, on the eve of catastrophe. The child was little more than
+    a year old when the world the family had known began to close around them.</p>
+  </section>
+
+  <div class="divider">✦</div>
+
+  <!-- 5 -->
+  <section class="chapter" id="persecution">
+    <div class="chap-num">Chapter Five</div>
+    <h2>Persecution &amp; Flight</h2>
+    <p class="place-era">Sudetenland → Slovakia → Hungary · 1938–1944</p>
+    <p class="dropcap">In the autumn of 1938 the Sudetenland — the German-speaking borderlands that
+    included Karlsbad — was annexed by Nazi Germany. For the region's Jews, dispossession followed
+    quickly. On <strong>14 September 1940</strong>, the official Nazi gazette, the
+    <em>Deutscher Reichsanzeiger</em>, published lists of Jews of the Karlsbad district whose property
+    and rights were confiscated for the German Reich. Among the names:
+    <strong>"Ezechiel Pick, born 22 June 1886 in Lichtenstadt."</strong><sup class="ref"><a href="#s8">8</a></sup></p>
+    <p>Stripped of home and livelihood, the family fled. Their path led out of Bohemia southward —
+    to <strong>Lučenec</strong> in Slovakia, where, according to family testimony recorded after the war,
+    Mathias Pick lived under the protection of the local rabbi.<sup class="ref"><a href="#s9">9</a></sup>
+    From there the road led onward to <strong>Budapest</strong>. It was a flight shared by countless
+    families of the region, scattering ahead of the deportations — and it is why the family's traces
+    appear afterward across three countries: born in Bohemia, sheltered in Slovakia, deported from Hungary.</p>
+  </section>
+
+  <div class="divider">✦</div>
+
+  <!-- 6 -->
+  <section class="chapter" id="deportation">
+    <div class="chap-num">Chapter Six</div>
+    <h2>Deportation</h2>
+    <p class="place-era">Budapest &amp; Kistarcsa, Hungary · 1944</p>
+    <p class="dropcap">In 1944, after the German occupation of Hungary, the machinery of deportation
+    reached the family. A Hungarian transfer list dated <strong>20 May 1944</strong> records the men
+    moved to the <strong>Kistarcsa internment camp</strong> outside Budapest. Two names appear together
+    on that list: <strong>Ezechiel Pick</strong>, born 1886 in Lichtenstadt, and his young son
+    <strong>Liebermann Pick</strong>, born 1937 in Karlsbad — father and child, deported side by
+    side.<sup class="ref"><a href="#s10">10</a></sup></p>
+    <p>Else, the mother, did not reach the camps. According to her brother Leopold's later account, she
+    was <strong>shot at the railway station in Budapest</strong> during a transport.<sup class="ref"><a href="#s9">9</a></sup>
+    Of the family of three that had lived in Karlsbad seven years before, only the child would survive.</p>
+  </section>
+
+  <div class="divider">✦</div>
+
+  <!-- 7 -->
+  <section class="chapter" id="survival">
+    <div class="chap-num">Chapter Seven</div>
+    <h2>A Child Alone</h2>
+    <p class="place-era">Displaced-persons camps, Germany → the Land of Israel · 1945–1947</p>
+    <p class="dropcap">The boy survived. Orphaned and alone, he emerged from the war in the
+    displaced-persons system of occupied Germany — passing through camps and children's homes at
+    Leipheim, Bayerisch-Gmain, Bergen-Belsen and Hamburg-Blankenese.<sup class="ref"><a href="#s11">11</a></sup>
+    In the intake records his parents' fate is marked simply as unknown; the surviving papers describe a
+    healthy, resilient child who spoke Hungarian.<sup class="ref"><a href="#s12">12</a></sup></p>
+    <p>His registration documents variously name him as Czechoslovak and as Hungarian — the twin traces
+    of a Bohemian birth and a Hungarian flight.<sup class="ref"><a href="#s11">11</a></sup> Taken in hand
+    by the Jewish Agency and the Youth Aliyah movement, he was examined, found fit, and prepared for
+    emigration to the Land of Israel.<sup class="ref"><a href="#s12">12</a></sup></p>
+    <blockquote>
+      Is the applicant, in his physical and mental condition, suited for the Aliyah? — <em>Yes.</em>
+      <cite>— Jewish Agency medical certificate, Blankenese, 17 June 1947</cite>
+    </blockquote>
+    <p>On <strong>20 July 1947</strong>, aboard the ship <strong>Providence</strong>, a nine-year-old
+    listed among the unaccompanied children reached the shores of the Land of
+    Israel.<sup class="ref"><a href="#s13">13</a></sup> He was received at a children's home on Mount
+    Carmel and given a new life and, in time, a new name. The last of the Karlsbad family had come
+    through.</p>
+  </section>
+
+  <div class="divider">✦</div>
+
+  <!-- 8 -->
+  <section class="chapter" id="memory">
+    <div class="chap-num">Chapter Eight</div>
+    <h2>Remembrance</h2>
+    <p class="place-era">Munich · 1960</p>
+    <p class="dropcap">Fifteen years after the war, in 1960, <strong>Leopold Weiss</strong> — Else's
+    brother, an uncle who had survived — sat down in Munich to write to the International Tracing Service
+    at Arolsen. He sought official word of his lost relatives: his brother-in-law
+    <strong>Mathias Pick</strong> and his sister <strong>Else Pick, née Weiss</strong>.<sup class="ref"><a href="#s9">9</a></sup></p>
+    <p>His letter, careful and precise, set down what he knew: where they were born, where they had
+    fled, and how they were lost. It is thanks to that act of remembrance that the threads of this family
+    — the Bohemian merchant, the Silesian station master's daughter, the orphaned child — can be drawn
+    together today into a single story. This history is written in their memory.</p>
+  </section>
+
+  <div class="divider">✦</div>
+
+  <!-- Family tree -->
+  <section class="chapter" id="tree">
+    <div class="chap-num">Appendix</div>
+    <h2>The Family Tree</h2>
+    <p>Three generations, as established by the records cited below.</p>
+    <div class="tree">
+<pre>
+        THE PICK LINE                          THE WEISS LINE
+
+   Sebald Pick ── Flora Wohl            Adolf Weiss ─── Rosalie Prinz
+   (merchant,      (of Lobositz)        (b. Krems 1878,   (b. Vienna 1879)
+    Lichtenstadt #34)                    station master)
+        │                                       │
+        ├── Fanni Pick (1874–1880)              ├── Leopold Weiss (b. 1905)
+        │                                       ├── Gustav Weiss (b. 1909)
+        └── EZECHIEL (MATHIAS) PICK             └── ELSE (ELSA) WEISS
+            b. 22 Jun 1886, Lichtenstadt            b. 3 Feb 1913, Freudenthal
+            merchant in Hroznětín                   │
+                    │                               │
+                    └───────────── married ────────┘
+                                    │
+                          LIEBERMANN PICK
+                          b. 6 Feb 1937, Karlsbad (Karlovy Vary)
+                          survived; emigrated to the Land of Israel, 1947
+</pre>
+    </div>
+  </section>
+
+  <!-- Sources -->
+  <section class="sources" id="sources">
+    <h2>Sources &amp; References</h2>
+    <p style="font-size:0.92rem;color:var(--ink-soft);">This history is drawn from primary archival
+    records. The documents themselves are held privately; the references below identify each source.</p>
+    <ol>
+      <li id="s1"><span class="archive">1793 Bohemian Census</span> — Pick household, Jewish quarter of Prague. JewishGen / Museum of Jewish Heritage databases.</li>
+      <li id="s2"><span class="archive">Jewish death register, Lichtenstadt, 1880</span> — burial record of Fanni Pick, daughter of Sebald Pick and Flora Wohl. Jewish registers of Bohemia, Czech National Archive.</li>
+      <li id="s3"><span class="archive">Jewish birth register, Lichtenstadt, 1886</span> — birth of Ezechiel Pick (Lichtenstadt no. 34), with marginal administrative annotations of 1906 (k.k. Statthalterei Prague, Z. 203.516) and 14 April 1931 (Bezirkshauptmannschaft Karlsbad, file Zl. 115). Jewish registers of Bohemia, Czech National Archive.</li>
+      <li id="s4"><span class="archive">Birth register, Freudenthal (Bruntál)</span> — record of the Weiss family; Adolf Weiss, railway official. Silesian civil/Jewish registers.</li>
+      <li id="s5"><span class="archive">Vienna birth records</span> — Rosalie Prinz (b. Vienna-Ottakring, 1879), daughter of Nathan Prinz and Regina Schnitzer; marriage of Adolf Weiss and Rosalie Prinz, Vienna 1902. JewishGen Vienna databases.</li>
+      <li id="s6"><span class="archive">Birth register, Freudenthal, 1913</span> — birth of Else (Elsa) Weiss, 3 February 1913, daughter of Adolf Weiss and Rosalie Prinz.</li>
+      <li id="s7"><span class="archive">Civil birth certificate (Rodný list), Karlovy Vary</span> — birth of Liebermann Pick, 6 February 1937, Karlovy Vary; father Ezechiel Pick, mother Else née Weiss. Register of the matriční obvod Praha 1 (svazek 1909, ročník 1937). Issued by the Czech Republic.</li>
+      <li id="s8"><span class="archive">Deutscher Reichsanzeiger und Preußischer Staatsanzeiger, Nr. 216</span>, 14 September 1940 — confiscation notice naming Ezechiel Pick among Jews of the Karlsbad district.</li>
+      <li id="s9"><span class="archive">International Tracing Service correspondence, Arolsen Archives</span> — letter of Leopold Weiss (Munich, 10 August 1960) concerning Mathias Pick and Else Pick née Weiss (file T/D-813227/228).</li>
+      <li id="s10"><span class="archive">Hungarian internment transfer list</span>, 20 May 1944 — Jewish men transferred to the Kistarcsa auxiliary internment camp, including Ezechiel Pick and Liebermann Pick.</li>
+      <li id="s11"><span class="archive">Displaced-persons registration records</span> — A.E.F. / UNRRA DP-2 registration cards and camp lists (Leipheim; Bayerisch-Gmain Jewish Children's Center, 1947). Arolsen Archives.</li>
+      <li id="s12"><span class="archive">Jewish Agency for Palestine file</span> — personal file of Liebermann Pick (identity card, medical certificate declaring fitness for aliyah, Blankenese, 17 June 1947). Central Zionist Archives; Youth Aliyah / Child &amp; Youth Migration Bureau records.</li>
+      <li id="s13"><span class="archive">Immigrant manifest, ship "Providence,"</span> arriving 20 July 1947 — Jewish Agency Aliyah Department, Haifa; Liberman Pick listed among unaccompanied children. Israeli State Archive.</li>
+    </ol>
+  </section>
+
+</main>
+
+<footer>
+  <div>A family history compiled from archival records.</div>
+  <div class="note">This account is dedicated to the memory of Ezechiel Mathias Pick and Else Pick,
+  née Weiss, and to all of the family lost in the Shoah. It closes with the survival of their son —
+  whose descendants carry the story forward.</div>
+</footer>
+
+</body>
+</html>
