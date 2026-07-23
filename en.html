@@ -157,20 +157,56 @@
   /* Section divider */
   .divider { text-align: center; color: var(--gold); margin: 3rem 0; font-size: 1.2rem; letter-spacing: 0.5em; }
 
-  /* Family tree */
+  /* Family tree — visual */
   .tree {
     background: #fffdf8;
     border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 1.8rem;
+    border-radius: 6px;
+    padding: 2rem 1.2rem;
     margin: 2rem 0;
     box-shadow: 0 2px 10px var(--shadow);
     font-family: "Helvetica Neue", Arial, sans-serif;
-    font-size: 0.92rem;
-    line-height: 1.5;
     overflow-x: auto;
   }
-  .tree pre { margin: 0; color: var(--accent-deep); white-space: pre; font-family: "SF Mono","Menlo",monospace; font-size: 0.82rem; }
+  .tree-lines { display: flex; justify-content: center; gap: 2.5rem; align-items: flex-start; min-width: 540px; }
+  .branch { flex: 1; max-width: 260px; }
+  .branch-title {
+    text-align: center;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.9rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .person {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 0.55rem 0.7rem;
+    margin: 0 auto 0.55rem;
+    text-align: center;
+    max-width: 240px;
+    position: relative;
+  }
+  .person .nm { font-weight: 700; color: var(--accent-deep); font-size: 0.9rem; }
+  .person .meta { font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.15rem; line-height: 1.4; }
+  .person.couple { border-color: var(--gold); background: rgba(168,130,63,0.06); }
+  .person.focus { border-width: 2px; border-color: var(--accent); background: #fff; }
+  .person.dim { opacity: 0.72; }
+  /* vertical connector under a node */
+  .connector { width: 2px; height: 16px; background: var(--rule); margin: -0.15rem auto 0.4rem; }
+  .children { margin-top: 0.2rem; }
+  .child-label { font-size: 0.64rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; text-align:center; margin: 0.2rem 0; }
+  /* union row */
+  .union {
+    margin-top: 1.2rem;
+    text-align: center;
+  }
+  .union .join { font-size: 0.72rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.5rem; }
+  .union .person.focus { max-width: 300px; margin: 0 auto; }
+  .tree-note { text-align:center; font-size: 0.72rem; color: var(--ink-soft); margin-top: 1rem; font-style: italic; }
 
   /* References list */
   section.sources {
@@ -401,12 +437,13 @@
     Carmel. The last of the Karlsbad family had come through.</p>
 
     <h3>A new name</h3>
-    <p>In his new country the child began a new life, and with it he took a new name. Liebermann Pick —
-    born in the spa town of Karlsbad, orphaned in the Shoah, carried across a continent — became
-    <strong>Moshe Liberman</strong>.<sup class="ref"><a href="#s7">7</a></sup> The surname Pick, borne by
-    the Bohemian merchants of Lichtenstadt for generations, was folded into the Hebraized
-    <em>Liberman</em>; and it is under that name that his own family would grow in Israel in the decades
-    that followed.</p>
+    <p>In his new country the child began a new life, and with it his name was reshaped. He had been
+    <strong>Liebermann Pick</strong> — <em>Liebermann</em> a given name, <em>Pick</em> the family name
+    borne by the Bohemian merchants of Lichtenstadt for generations. In Israel his given name Liebermann
+    was carried over as the <strong>family name, Liberman</strong>, and a new given name was added:
+    <strong>Moshe</strong>.<sup class="ref"><a href="#s7">7</a></sup> Thus Liebermann Pick became
+    <strong>Moshe Liberman</strong> — and it is under that name that his own family would grow in Israel
+    in the decades that followed.</p>
   </section>
 
   <div class="divider">✦</div>
@@ -434,25 +471,63 @@
     <h2>The Family Tree</h2>
     <p>Three generations, as established by the records cited below.</p>
     <div class="tree">
-<pre>
-        THE PICK LINE                          THE WEISS LINE
+      <div class="tree-lines">
 
-   Sebald Pick ── Flora Wohl            Adolf Weiss ─── Rosalie Prinz
-   (merchant,      (of Lobositz)        (b. Krems 1878,   (b. Vienna 1879)
-    Lichtenstadt #34)                    station master)
-        │                                       │
-        ├── Fanni Pick (1874–1880)              ├── Leopold Weiss (b. 1905)
-        │                                       ├── Gustav Weiss (b. 1909)
-        └── EZECHIEL (MATHIAS) PICK             └── ELSE (ELSA) WEISS
-            b. 22 Jun 1886, Lichtenstadt            b. 3 Feb 1913, Freudenthal
-            merchant in Hroznětín                   │
-                    │                               │
-                    └───────────── married ────────┘
-                                    │
-                          LIEBERMANN PICK
-                          b. 6 Feb 1937, Karlsbad (Karlovy Vary)
-                          survived; emigrated to the Land of Israel, 1947
-</pre>
+        <div class="branch">
+          <div class="branch-title">The Pick Line</div>
+          <div class="person couple">
+            <div class="nm">Sebald Pick &amp; Flora Wohl</div>
+            <div class="meta">Merchant · Lichtenstadt (Hroznětín) no. 34<br>Flora née Wohl, of Lobositz</div>
+          </div>
+          <div class="connector"></div>
+          <div class="children">
+            <div class="child-label">Children</div>
+            <div class="person dim">
+              <div class="nm">Fanni Pick</div>
+              <div class="meta">1874 – 1880</div>
+            </div>
+            <div class="person focus">
+              <div class="nm">Ezechiel (Mathias) Pick</div>
+              <div class="meta">b. 22 Jun 1886, Lichtenstadt<br>merchant in Hroznětín</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="branch">
+          <div class="branch-title">The Weiss Line</div>
+          <div class="person couple">
+            <div class="nm">Adolf Weiss &amp; Rosalie Prinz</div>
+            <div class="meta">Station master, b. Krems 1878<br>Rosalie née Prinz, b. Vienna 1879</div>
+          </div>
+          <div class="connector"></div>
+          <div class="children">
+            <div class="child-label">Children</div>
+            <div class="person dim">
+              <div class="nm">Leopold Weiss</div>
+              <div class="meta">b. 1905</div>
+            </div>
+            <div class="person dim">
+              <div class="nm">Gustav Weiss</div>
+              <div class="meta">b. 1909</div>
+            </div>
+            <div class="person focus">
+              <div class="nm">Else (Elsa) Weiss</div>
+              <div class="meta">b. 3 Feb 1913, Freudenthal</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="union">
+        <div class="join">— married —</div>
+        <div class="person focus">
+          <div class="nm">Liebermann Pick → Moshe Liberman</div>
+          <div class="meta">b. 6 Feb 1937, Karlsbad (Karlovy Vary)<br>survived; emigrated to the Land of Israel, 1947</div>
+        </div>
+      </div>
+
+      <div class="tree-note">Three generations, as established by the records cited below.</div>
     </div>
   </section>
 

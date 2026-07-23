@@ -133,18 +133,51 @@
 
   .divider { text-align: center; color: var(--gold); margin: 3rem 0; font-size: 1.2rem; letter-spacing: 0.5em; }
 
+  /* Family tree — visual (RTL) */
   .tree {
     background: #fffdf8;
     border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 1.8rem;
+    border-radius: 6px;
+    padding: 2rem 1.2rem;
     margin: 2rem 0;
     box-shadow: 0 2px 10px var(--shadow);
+    font-family: Arial, "Helvetica Neue", sans-serif;
     overflow-x: auto;
-    direction: ltr;
-    text-align: left;
   }
-  .tree pre { margin: 0; color: var(--accent-deep); white-space: pre; font-family: "SF Mono","Menlo",monospace; font-size: 0.82rem; }
+  .tree-lines { display: flex; justify-content: center; gap: 2.5rem; align-items: flex-start; min-width: 540px; }
+  .branch { flex: 1; max-width: 260px; }
+  .branch-title {
+    text-align: center;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+    margin-bottom: 0.9rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .person {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 0.55rem 0.7rem;
+    margin: 0 auto 0.55rem;
+    text-align: center;
+    max-width: 240px;
+  }
+  .person .nm { font-weight: 700; color: var(--accent-deep); font-size: 0.98rem; }
+  .person .meta { font-size: 0.78rem; color: var(--ink-soft); margin-top: 0.15rem; line-height: 1.5; }
+  .person.couple { border-color: var(--gold); background: rgba(168,130,63,0.06); }
+  .person.focus { border-width: 2px; border-color: var(--accent); background: #fff; }
+  .person.dim { opacity: 0.72; }
+  .connector { width: 2px; height: 16px; background: var(--rule); margin: -0.15rem auto 0.4rem; }
+  .children { margin-top: 0.2rem; }
+  .child-label { font-size: 0.7rem; color: var(--gold); letter-spacing: 0.06em; text-align:center; margin: 0.2rem 0; }
+  .union { margin-top: 1.2rem; text-align: center; }
+  .union .join { font-size: 0.78rem; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+  .union .person.focus { max-width: 320px; margin: 0 auto; }
+  .tree-note { text-align:center; font-size: 0.78rem; color: var(--ink-soft); margin-top: 1rem; }
+  /* names that are proper Latin-script keep LTR direction inside RTL */
+  .person .nm .lat { direction: ltr; unicode-bidi: embed; display: inline-block; }
 
   section.sources {
     margin: 4rem 0 2rem;
@@ -349,10 +382,11 @@
     נקלט בבית ילדים על הר הכרמל. אחרון בני משפחת קרלסבד צלח את הדרך.</p>
 
     <h3>שם חדש</h3>
-    <p>בארצו החדשה החל הילד חיים חדשים, ועמם נטל שם חדש. ליברמן פיק — יליד עיר המרפא קרלסבד, יתום
-    השואה, שנישא על פני יבשת שלמה — הפך ל<strong>משה ליברמן</strong>.<sup class="ref"><a href="#s7">7</a></sup>
-    שם המשפחה פיק, שנשאו סוחרי בוהמיה מליכטנשטדט במשך דורות, נטמע בצורתו העברית <em>ליברמן</em>; ותחת
-    שם זה תגדל משפחתו־שלו בישראל בעשורים שיבואו.</p>
+    <p>בארצו החדשה החל הילד חיים חדשים, ועמם עוצב שמו מחדש. הוא היה <strong>ליברמן פיק</strong> —
+    <em>ליברמן</em> שם פרטי, <em>פיק</em> שם המשפחה שנשאו סוחרי בוהמיה מליכטנשטדט במשך דורות. בישראל
+    הפך שמו הפרטי ליברמן ל<strong>שם המשפחה — ליברמן</strong>, ונוסף לו שם פרטי חדש:
+    <strong>משה</strong>.<sup class="ref"><a href="#s7">7</a></sup> כך הפך ליברמן פיק ל<strong>משה
+    ליברמן</strong> — ותחת שם זה תגדל משפחתו־שלו בישראל בעשורים שיבואו.</p>
   </section>
 
   <div class="divider">✦</div>
@@ -378,27 +412,63 @@
     <h2>אילן היוחסין</h2>
     <p>שלושה דורות, כפי שנקבעו על פי המקורות המצוינים להלן.</p>
     <div class="tree">
-<pre>
-        THE PICK LINE                          THE WEISS LINE
-        (שושלת פיק)                            (שושלת ווייס)
+      <div class="tree-lines">
 
-   Sebald Pick ── Flora Wohl            Adolf Weiss ─── Rosalie Prinz
-   (סבלד פיק,     (פלורה וול)           (אדולף ווייס,    (רוזליה פרינץ)
-    ליכטנשטדט #34)                        מנהל תחנה)
-        │                                       │
-        ├── Fanni Pick (פאני, 1874–1880)        ├── Leopold Weiss (לאופולד, 1905)
-        │                                       ├── Gustav Weiss (גוסטב, 1909)
-        └── EZECHIEL (MATHIAS) PICK             └── ELSE (ELSA) WEISS
-            יחזקאל (מתיאס) פיק                       אלזה ווייס
-            b. 22 Jun 1886, Lichtenstadt            b. 3 Feb 1913, Freudenthal
-                    │                               │
-                    └───────────── married ────────┘
-                                    │
-                          LIEBERMANN PICK (ליברמן פיק)
-                          → Moshe Liberman (משה ליברמן)
-                          b. 6 Feb 1937, Karlsbad (קרלובי וארי)
-                          שרד; עלה לארץ ישראל, 1947
-</pre>
+        <div class="branch">
+          <div class="branch-title">שושלת פיק</div>
+          <div class="person couple">
+            <div class="nm">סבלד פיק ופלורה וול</div>
+            <div class="meta">סוחר · ליכטנשטדט (הרוזנייטין) מס׳ 34<br>פלורה לבית וול, מלובוזיץ</div>
+          </div>
+          <div class="connector"></div>
+          <div class="children">
+            <div class="child-label">ילדים</div>
+            <div class="person dim">
+              <div class="nm">פאני פיק</div>
+              <div class="meta">1874–1880</div>
+            </div>
+            <div class="person focus">
+              <div class="nm">יחזקאל (מתיאס) פיק</div>
+              <div class="meta">נ׳ 22 ביוני 1886, ליכטנשטדט<br>סוחר בהרוזנייטין</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="branch">
+          <div class="branch-title">שושלת ווייס</div>
+          <div class="person couple">
+            <div class="nm">אדולף ווייס ורוזליה פרינץ</div>
+            <div class="meta">מנהל תחנה, נ׳ קרמס 1878<br>רוזליה לבית פרינץ, נ׳ ווינה 1879</div>
+          </div>
+          <div class="connector"></div>
+          <div class="children">
+            <div class="child-label">ילדים</div>
+            <div class="person dim">
+              <div class="nm">לאופולד ווייס</div>
+              <div class="meta">נ׳ 1905</div>
+            </div>
+            <div class="person dim">
+              <div class="nm">גוסטב ווייס</div>
+              <div class="meta">נ׳ 1909</div>
+            </div>
+            <div class="person focus">
+              <div class="nm">אלזה ווייס</div>
+              <div class="meta">נ׳ 3 בפברואר 1913, פרוידנטל</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="union">
+        <div class="join">— נישאו —</div>
+        <div class="person focus">
+          <div class="nm">ליברמן פיק ← משה ליברמן</div>
+          <div class="meta">נ׳ 6 בפברואר 1937, קרלסבד (קרלובי וארי)<br>שרד; עלה לארץ ישראל, 1947</div>
+        </div>
+      </div>
+
+      <div class="tree-note">שלושה דורות, כפי שנקבעו על פי המקורות המצוינים להלן.</div>
     </div>
   </section>
 
