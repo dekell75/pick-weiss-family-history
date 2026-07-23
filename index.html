@@ -206,6 +206,14 @@
     body { font-size: 1.06rem; }
     section.chapter > h2 { font-size: 1.6rem; }
   }
+
+  /* Map legend */
+  .map-legend { display:flex; flex-wrap:wrap; gap:0.8rem 1.4rem; margin:0.4rem 0 0; font-family:"Helvetica Neue",Arial,sans-serif; font-size:0.8rem; color:var(--ink-soft); }
+  .ml-item { display:inline-flex; align-items:center; gap:0.4rem; }
+  .ml-dot { width:11px; height:11px; border-radius:50%; display:inline-block; flex-shrink:0; border:1.5px solid #fff; box-shadow:0 1px 3px rgba(0,0,0,0.25); }
+  .ml-line { width:22px; height:3px; display:inline-block; flex-shrink:0; border-radius:2px; opacity:0.8; }
+  .leaflet-popup-content-wrapper { font-family:"Helvetica Neue",Arial,sans-serif; border-radius:5px; }
+
 </style>
 </head>
 <body>
@@ -233,6 +241,7 @@
       <li><a href="#survival">ילד לבדו — הישרדות וארץ חדשה</a></li>
       <li><a href="#memory">זיכרון</a></li>
       <li><a href="#tree">אילן היוחסין</a></li>
+      <li><a href="#map">מפת מסע המשפחה</a></li>
       <li><a href="#sources">מקורות והפניות</a></li>
     </ol>
   </nav>
@@ -471,6 +480,97 @@
       <div class="tree-note">שלושה דורות, כפי שנקבעו על פי המקורות המצוינים להלן.</div>
     </div>
   </section>
+
+  <div class="divider">✦</div>
+
+  <!-- Map -->
+  <section class="chapter" id="map">
+    <div class="chap-num">מפה</div>
+    <h2>מסע המשפחה</h2>
+    <p>מארץ המרפא של מערב בוהמיה, דרך מנוסה וגירוש, ועד לחיים חדשים בישראל — מסלולי משפחות פיק וווייס לאורך ארבעה עשורים.</p>
+    <div id="family-map" style="height:520px;border-radius:6px;border:1px solid var(--line);box-shadow:0 2px 10px var(--shadow);margin:1.2rem 0 0.6rem;"></div>
+    <div class="map-legend">
+      <span class="ml-item"><span class="ml-dot" style="background:#6f4e37"></span>שורשי פיק</span>
+      <span class="ml-item"><span class="ml-dot" style="background:#2f5a86"></span>שורשי ווייס</span>
+      <span class="ml-item"><span class="ml-dot" style="background:#8a3a2e"></span>רדיפה וגירוש</span>
+      <span class="ml-item"><span class="ml-dot" style="background:#3a7a4a"></span>הישרדות ועלייה</span>
+      <span class="ml-item"><span class="ml-line" style="background:#8a3a2e"></span>מסלול המנוסה</span>
+      <span class="ml-item"><span class="ml-line" style="background:#3a7a4a"></span>מסלול ההישרדות</span>
+    </div>
+  </section>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+  (function(){
+    var map = L.map('family-map', {scrollWheelZoom: false}).setView([50.5, 14.5], 5);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+      subdomains: 'abcd', maxZoom: 19
+    }).addTo(map);
+
+    function icon(color) {
+      return L.divIcon({className:'',html:
+        '<div style="width:14px;height:14px;border-radius:50%;background:'+color+';border:2.5px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.35)"></div>',
+        iconSize:[14,14],iconAnchor:[7,7],popupAnchor:[0,-10]});
+    }
+
+    var pick   = '#6f4e37';
+    var weiss  = '#2f5a86';
+    var danger = '#8a3a2e';
+    var green  = '#3a7a4a';
+
+    var places = [
+      {ll:[50.3833,12.8667], color:pick,   title:'ליכטנשטדט (הרוזנייטין)',
+       body:'בית משפחת סבלד פיק ופלורה וול. יחזקאל (מתיאס) פיק נולד כאן, 22 ביוני 1886. בית מס׳ 34.'},
+      {ll:[50.2292,12.8712], color:pick,   title:'קרלסבד (קרלובי וארי)',
+       body:'מקום מסחרו של יחזקאל פיק. ליברמן פיק נולד כאן, 6 בפברואר 1937. רכוש המשפחה הוחרם ופורסם ב<em>Reichsanzeiger</em>, 14 בספטמבר 1940.'},
+      {ll:[48.4089,15.6128], color:weiss,  title:'קרמס אן דר דונאו',
+       body:'מקום לידתו של אדולף ווייס (1878), מנהל תחנת רכבת, אביה של אלזה ווייס.'},
+      {ll:[48.2082,16.3738], color:weiss,  title:'ווינה',
+       body:'מקום לידתה של רוזליה פרינץ (1879). אדולף ווייס ורוזליה פרינץ נישאו כאן, 1902.'},
+      {ll:[49.8878,17.4647], color:weiss,  title:'פרוידנטל (ברונטל)',
+       body:'בית משפחת ווייס. אלזה ווייס נולדה כאן, 3 בפברואר 1913, בתם של אדולף ווייס ורוזליה פרינץ.'},
+      {ll:[48.3306,19.6672], color:danger, title:'לוצ׳נץ, סלובקיה',
+       body:'המשפחה נמלטה לכאן לאחר ההחרמה. מתיאס פיק חי בחסות הרב המקומי עד לגירוש.'},
+      {ll:[47.4979,19.0402], color:danger, title:'בודפשט',
+       body:'קצה המנוסה. אלזה פיק נורתה בתחנת הרכבת בבודפשט במהלך משלוח. האב והבן גורשו הלאה.'},
+      {ll:[47.5583,19.2167], color:danger, title:'מחנה קישטרצה',
+       body:'רשימת העברה מ־20 במאי 1944 מתעדת את <strong>יחזקאל פיק</strong> (יליד 1886) ואת בנו <strong>ליברמן פיק</strong> (יליד 1937) מגורשים יחדיו.'},
+      {ll:[48.4436,10.1327], color:green,  title:'מחנה עקורים לייפהיים',
+       body:'ליברמן פיק נרשם כעקור (כרטיס DP-2 מס׳ 459622). לאומיות: <strong>צ׳כוסלובקי (C.S.R.)</strong>.'},
+      {ll:[47.7167,12.7667], color:green,  title:'באייריש־גמאין',
+       body:'מרכז הילדים היהודי. ליברמן פיק רשום כפריט מס׳ 110, יליד קרלסבד, לאומיות C.S.R. (מרץ 1947).'},
+      {ll:[52.7622,9.9953],  color:green,  title:'מחנה העקורים ברגן־בלזן',
+       body:'הסוכנות היהודית לארץ ישראל הנפיקה לילד תעודת זהות כאן (כרטיס מס׳ 8, האזור הבריטי).'},
+      {ll:[53.5653,9.8228],  color:green,  title:'המבורג־בלנקנזה',
+       body:'בית הילדים של עליית הנוער על האלבה. ליברמן פיק טופל כאן. תעודה רפואית הוצאה ב־17 ביוני 1947 המכריזה על כשירותו לעלייה. סיפורו מסופר בספר <em>דובדבנים על האלבה</em>.'},
+      {ll:[32.8183,34.9892], color:green,  title:'חיפה — הר הכרמל',
+       body:'ליברמן פיק מגיע על סיפון האנייה <em>פרובידנס</em>, 20 ביולי 1947, כילד בלתי מלווה (פריט מס׳ 126 ברשימת הנוסעים). נקלט בבית עולים על הר הכרמל.'},
+    ];
+
+    places.forEach(function(p){
+      L.marker(p.ll, {icon: icon(p.color)}).addTo(map)
+       .bindPopup('<strong>'+p.title+'</strong><br><span style="font-size:0.88rem;line-height:1.5;direction:rtl;text-align:right;display:block">'+p.body+'</span>',
+         {maxWidth:280, className:'family-popup'});
+    });
+
+    L.polyline([
+      [50.3833,12.8667],[50.2292,12.8712],
+      [50.2292,12.8712],[48.3306,19.6672],
+      [48.3306,19.6672],[47.4979,19.0402],
+      [47.4979,19.0402],[47.5583,19.2167]
+    ], {color:'#8a3a2e', weight:2.5, opacity:0.7, dashArray:'6 4'}).addTo(map);
+
+    L.polyline([
+      [47.4979,19.0402],[48.4436,10.1327],
+      [48.4436,10.1327],[47.7167,12.7667],
+      [47.7167,12.7667],[52.7622,9.9953],
+      [52.7622,9.9953],[53.5653,9.8228],
+      [53.5653,9.8228],[32.8183,34.9892]
+    ], {color:'#3a7a4a', weight:2.5, opacity:0.7, dashArray:'6 4'}).addTo(map);
+  })();
+  </script>
 
   <!-- Sources -->
   <section class="sources" id="sources">

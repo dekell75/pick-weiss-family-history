@@ -245,6 +245,14 @@
     body { font-size: 1.02rem; }
     section.chapter > h2 { font-size: 1.5rem; }
   }
+
+  /* Map legend */
+  .map-legend { display:flex; flex-wrap:wrap; gap:0.8rem 1.4rem; margin:0.4rem 0 0; font-family:"Helvetica Neue",Arial,sans-serif; font-size:0.8rem; color:var(--ink-soft); }
+  .ml-item { display:inline-flex; align-items:center; gap:0.4rem; }
+  .ml-dot { width:11px; height:11px; border-radius:50%; display:inline-block; flex-shrink:0; border:1.5px solid #fff; box-shadow:0 1px 3px rgba(0,0,0,0.25); }
+  .ml-line { width:22px; height:3px; display:inline-block; flex-shrink:0; border-radius:2px; opacity:0.8; }
+  .leaflet-popup-content-wrapper { font-family:"Helvetica Neue",Arial,sans-serif; border-radius:5px; }
+
 </style>
 </head>
 <body>
@@ -272,6 +280,7 @@
       <li><a href="#survival">A Child Alone — Survival &amp; a New Land</a></li>
       <li><a href="#memory">Remembrance</a></li>
       <li><a href="#tree">The Family Tree</a></li>
+      <li><a href="#map">Map of the Family's Journey</a></li>
       <li><a href="#sources">Sources &amp; References</a></li>
     </ol>
   </nav>
@@ -530,6 +539,103 @@
       <div class="tree-note">Three generations, as established by the records cited below.</div>
     </div>
   </section>
+
+  <div class="divider">✦</div>
+
+  <!-- Map -->
+  <section class="chapter" id="map">
+    <div class="chap-num">Map</div>
+    <h2>The Family's Journey</h2>
+    <p>From the spa country of western Bohemia, through flight and deportation, to a new life in Israel — the routes of the Pick and Weiss families across four decades.</p>
+    <div id="family-map" style="height:520px;border-radius:6px;border:1px solid var(--line);box-shadow:0 2px 10px var(--shadow);margin:1.2rem 0 0.6rem;"></div>
+    <div class="map-legend">
+      <span class="ml-item"><span class="ml-dot" style="background:#6f4e37"></span>Pick origins</span>
+      <span class="ml-item"><span class="ml-dot" style="background:#2f5a86"></span>Weiss origins</span>
+      <span class="ml-item"><span class="ml-dot" style="background:#8a3a2e"></span>Persecution &amp; deportation</span>
+      <span class="ml-item"><span class="ml-dot" style="background:#3a7a4a"></span>Survival &amp; emigration</span>
+      <span class="ml-item"><span class="ml-line" style="background:#8a3a2e"></span>Flight route</span>
+      <span class="ml-item"><span class="ml-line" style="background:#3a7a4a"></span>Survival route</span>
+    </div>
+  </section>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+  (function(){
+    var map = L.map('family-map', {scrollWheelZoom: false}).setView([50.5, 14.5], 5);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+      subdomains: 'abcd', maxZoom: 19
+    }).addTo(map);
+
+    function icon(color) {
+      return L.divIcon({className:'',html:
+        '<div style="width:14px;height:14px;border-radius:50%;background:'+color+';border:2.5px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.35)"></div>',
+        iconSize:[14,14],iconAnchor:[7,7],popupAnchor:[0,-10]});
+    }
+
+    var pick   = '#6f4e37';
+    var weiss  = '#2f5a86';
+    var danger = '#8a3a2e';
+    var green  = '#3a7a4a';
+
+    var places = [
+      // Pick origins
+      {ll:[50.3833,12.8667], color:pick,   title:'Lichtenstadt (Hroznětín)',
+       body:'Family home of Sebald Pick &amp; Flora Wohl. Ezechiel (Mathias) Pick born here, 22 June 1886. House no. 34.'},
+      {ll:[50.2292,12.8712], color:pick,   title:'Karlsbad (Karlovy Vary)',
+       body:'Where Ezechiel Pick worked as a merchant. Liebermann Pick born here, 6 February 1937. Property confiscated by the Nazi regime, published in the <em>Reichsanzeiger</em>, 14 September 1940.'},
+      // Weiss origins
+      {ll:[48.4089,15.6128], color:weiss,  title:'Krems an der Donau',
+       body:'Birthplace of Adolf Weiss (1878), railway station master, father of Else Weiss.'},
+      {ll:[48.2082,16.3738], color:weiss,  title:'Vienna (Wien)',
+       body:'Birthplace of Rosalie Prinz (1879). Adolf Weiss and Rosalie Prinz married here, 1902.'},
+      {ll:[49.8878,17.4647], color:weiss,  title:'Freudenthal (Bruntál)',
+       body:'Home of the Weiss family. Else Weiss born here, 3 February 1913, daughter of Adolf Weiss and Rosalie Prinz.'},
+      // Flight & persecution
+      {ll:[48.3306,19.6672], color:danger, title:'Lučenec, Slovakia',
+       body:'The Pick family fled here after the confiscation. Mathias Pick lived under the protection of the local rabbi until deportation.'},
+      {ll:[47.4979,19.0402], color:danger, title:'Budapest',
+       body:'End of the family's flight. Else Pick is reported to have been shot at the railway station during a transport. Father and son deported onward.'},
+      {ll:[47.5583,19.2167], color:danger, title:'Kistarcsa Camp',
+       body:'Transfer list of 20 May 1944 records both <strong>Ezechiel Pick</strong> (b. 1886) and his son <strong>Liebermann Pick</strong> (b. 1937) deported here together.'},
+      // Survival route
+      {ll:[48.4436,10.1327], color:green,  title:'Leipheim DP Camp',
+       body:'Liebermann Pick registered as a Displaced Person (DP-2 card no. 459622). Nationality recorded: <strong>Czechoslovak (C.S.R.)</strong>.'},
+      {ll:[47.7167,12.7667], color:green,  title:'Bayerisch-Gmain',
+       body:'Jewish Children's Center. Liebermann Pick listed as entry no. 110, born Karlsbad, nationality C.S.R. (March 1947).'},
+      {ll:[52.7622,9.9953],  color:green,  title:'Bergen-Belsen DP Camp',
+       body:'Jewish Agency for Palestine issued the child's identity card here (Card no. 8, British Zone).'},
+      {ll:[53.5653,9.8228],  color:green,  title:'Hamburg-Blankenese',
+       body:'Youth Aliyah children's home on the Elbe. Liebermann Pick cared for here. Medical certificate issued 17 June 1947 declaring him fit for aliyah. His story is told in <em>Cherries on the Elbe</em>.'},
+      {ll:[32.8183,34.9892], color:green,  title:'Haifa — Mount Carmel',
+       body:'Liebermann Pick arrives aboard the ship <em>Providence</em>, 20 July 1947, as an unaccompanied child (manifest entry no. 126). Received at Beit Olim on Mount Carmel.'},
+    ];
+
+    places.forEach(function(p){
+      L.marker(p.ll, {icon: icon(p.color)}).addTo(map)
+       .bindPopup('<strong>'+p.title+'</strong><br><span style="font-size:0.88rem;line-height:1.5">'+p.body+'</span>',
+         {maxWidth:280, className:'family-popup'});
+    });
+
+    // Flight route: Lichtenstadt → Karlsbad → Lučenec → Budapest → Kistarcsa
+    L.polyline([
+      [50.3833,12.8667],[50.2292,12.8712],
+      [50.2292,12.8712],[48.3306,19.6672],
+      [48.3306,19.6672],[47.4979,19.0402],
+      [47.4979,19.0402],[47.5583,19.2167]
+    ], {color:'#8a3a2e', weight:2.5, opacity:0.7, dashArray:'6 4'}).addTo(map);
+
+    // Survival route: Budapest → Leipheim → Bayerisch-Gmain → Bergen-Belsen → Blankenese → Haifa
+    L.polyline([
+      [47.4979,19.0402],[48.4436,10.1327],
+      [48.4436,10.1327],[47.7167,12.7667],
+      [47.7167,12.7667],[52.7622,9.9953],
+      [52.7622,9.9953],[53.5653,9.8228],
+      [53.5653,9.8228],[32.8183,34.9892]
+    ], {color:'#3a7a4a', weight:2.5, opacity:0.7, dashArray:'6 4'}).addTo(map);
+  })();
+  </script>
 
   <!-- Sources -->
   <section class="sources" id="sources">
