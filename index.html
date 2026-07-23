@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Pick &amp; Weiss Family — A History from Bohemia</title>
+<title>משפחת פיק ווייס — תולדות משפחה מבוהמיה</title>
 <style>
   :root {
     --ink: #26221c;
@@ -22,12 +22,19 @@
   html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    font-family: "Iowan Old Style", Georgia, "Palatino Linotype", serif;
+    font-family: "Frank Ruhl Libre", "Times New Roman", "David", Georgia, serif;
     background: var(--paper);
     color: var(--ink);
-    line-height: 1.75;
-    font-size: 1.06rem;
+    line-height: 1.9;
+    font-size: 1.12rem;
+    direction: rtl;
   }
+
+  /* Language switcher */
+  .langbar { text-align: center; padding: 0.7rem 1rem 0; background: var(--paper-deep); font-family: Arial, "Helvetica Neue", sans-serif; font-size: 0.85rem; }
+  .langbar a { color: var(--accent); text-decoration: none; padding: 0.2rem 0.6rem; border-radius: 3px; }
+  .langbar a.active { background: var(--accent); color: #fff; }
+  .langbar a:hover:not(.active) { text-decoration: underline; }
 
   /* Hero */
   .hero {
@@ -39,30 +46,27 @@
     border-bottom: 3px double var(--accent);
   }
   .hero .kicker {
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    font-size: 0.72rem;
+    font-family: Arial, "Helvetica Neue", sans-serif;
+    letter-spacing: 0.14em;
+    font-size: 0.8rem;
     color: var(--gold);
     margin-bottom: 1.2rem;
   }
   .hero h1 {
     font-weight: normal;
     font-size: 2.7rem;
-    line-height: 1.2;
+    line-height: 1.3;
     margin: 0 auto 1rem;
-    max-width: 15ch;
+    max-width: 18ch;
     color: var(--accent-deep);
   }
   .hero p {
-    font-style: italic;
     color: var(--ink-soft);
-    max-width: 560px;
+    max-width: 580px;
     margin: 0 auto;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
 
-  /* Layout */
   main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
 
   /* Table of contents */
@@ -76,82 +80,59 @@
     box-shadow: 0 2px 10px var(--shadow);
   }
   nav.toc h2 {
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+    font-family: Arial, "Helvetica Neue", sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
     color: var(--gold);
     margin: 0 0 0.8rem;
   }
-  nav.toc ol { margin: 0; padding-left: 1.3rem; color: var(--accent-deep); }
+  nav.toc ol { margin: 0; padding-right: 1.3rem; color: var(--accent-deep); }
   nav.toc li { margin: 0.3rem 0; }
   nav.toc a { color: var(--accent-deep); text-decoration: none; }
   nav.toc a:hover { text-decoration: underline; }
 
-  /* Chapters */
   section.chapter { margin: 3.5rem 0; }
   section.chapter > .chap-num {
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+    font-family: Arial, "Helvetica Neue", sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
     color: var(--gold);
   }
   section.chapter > h2 {
     font-weight: normal;
-    font-size: 1.85rem;
+    font-size: 1.95rem;
     color: var(--accent-deep);
     margin: 0.2rem 0 0.4rem;
-    line-height: 1.25;
+    line-height: 1.3;
   }
   section.chapter > h2 + .place-era {
-    font-style: italic;
     color: var(--accent);
     margin: 0 0 1.3rem;
-    font-size: 0.98rem;
+    font-size: 1rem;
   }
   .chapter p { margin: 1rem 0; }
   .chapter h3 {
     font-weight: normal;
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     color: var(--accent-deep);
     margin: 2rem 0 0.3rem;
   }
 
-  .dropcap::first-letter {
-    font-size: 3.4rem;
-    line-height: 0.8;
-    float: left;
-    padding: 0.1em 0.12em 0 0;
-    color: var(--accent);
-    font-weight: bold;
-  }
-
-  /* Pull quote */
   blockquote {
     margin: 1.8rem 0;
     padding: 0.6rem 1.4rem;
-    border-left: 4px solid var(--gold);
-    font-style: italic;
+    border-right: 4px solid var(--gold);
     color: var(--ink-soft);
     background: rgba(168,130,63,0.05);
   }
-  blockquote cite { display:block; font-style: normal; font-size: 0.85rem; margin-top: 0.5rem; color: var(--accent); }
+  blockquote cite { display:block; font-size: 0.88rem; margin-top: 0.5rem; color: var(--accent); }
 
-  /* Source citation superscripts */
   sup.ref { font-size: 0.7em; }
-  sup.ref a {
-    color: var(--gold);
-    text-decoration: none;
-    font-weight: bold;
-    padding: 0 0.1em;
-  }
+  sup.ref a { color: var(--gold); text-decoration: none; font-weight: bold; padding: 0 0.15em; }
   sup.ref a:hover { text-decoration: underline; }
 
-  /* Section divider */
   .divider { text-align: center; color: var(--gold); margin: 3rem 0; font-size: 1.2rem; letter-spacing: 0.5em; }
 
-  /* Family tree */
   .tree {
     background: #fffdf8;
     border: 1px solid var(--line);
@@ -159,309 +140,296 @@
     padding: 1.8rem;
     margin: 2rem 0;
     box-shadow: 0 2px 10px var(--shadow);
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    font-size: 0.92rem;
-    line-height: 1.5;
     overflow-x: auto;
+    direction: ltr;
+    text-align: left;
   }
   .tree pre { margin: 0; color: var(--accent-deep); white-space: pre; font-family: "SF Mono","Menlo",monospace; font-size: 0.82rem; }
 
-  /* References list */
   section.sources {
     margin: 4rem 0 2rem;
     padding-top: 2rem;
     border-top: 3px double var(--accent);
   }
-  section.sources h2 {
-    font-weight: normal;
-    font-size: 1.5rem;
-    color: var(--accent-deep);
-  }
-  section.sources ol { padding-left: 1.4rem; }
-  section.sources li {
-    margin: 0.7rem 0;
-    font-size: 0.92rem;
-    color: var(--ink-soft);
-    line-height: 1.5;
-  }
+  section.sources h2 { font-weight: normal; font-size: 1.6rem; color: var(--accent-deep); }
+  section.sources ol { padding-right: 1.4rem; }
+  section.sources li { margin: 0.7rem 0; font-size: 0.98rem; color: var(--ink-soft); line-height: 1.6; }
   section.sources li:target { background: rgba(168,130,63,0.14); border-radius: 3px; }
-  section.sources .archive { font-style: italic; color: var(--accent); }
+  section.sources .archive { color: var(--accent); font-weight: 600; }
 
   footer {
     text-align: center;
     padding: 2.5rem 1.5rem 4rem;
     color: var(--ink-soft);
-    font-size: 0.88rem;
+    font-size: 0.95rem;
     max-width: var(--maxw);
     margin: 0 auto;
     border-top: 1px solid var(--line);
   }
-  footer .note { font-style: italic; max-width: 560px; margin: 0.8rem auto 0; }
+  footer .note { max-width: 580px; margin: 0.8rem auto 0; }
 
   @media (max-width: 560px) {
-    .hero h1 { font-size: 1.9rem; }
-    body { font-size: 1.02rem; }
-    section.chapter > h2 { font-size: 1.5rem; }
+    .hero h1 { font-size: 2rem; }
+    body { font-size: 1.06rem; }
+    section.chapter > h2 { font-size: 1.6rem; }
   }
 </style>
 </head>
 <body>
 
+<div class="langbar"><a href="index.html" class="active">עברית</a> · <a href="en.html">English</a></div>
+
 <header class="hero">
-  <div class="kicker">A Family History</div>
-  <h1>The Pick &amp; Weiss Family</h1>
-  <p>From the Jewish communities of Bohemia and Silesia — a story of merchants and
-  railwaymen, of persecution and survival, told through the records they left behind.</p>
+  <div class="kicker">תולדות משפחה</div>
+  <h1>משפחת פיק ווייס</h1>
+  <p>מן הקהילות היהודיות של בוהמיה ושלזיה — סיפורם של סוחרים ועובדי רכבת,
+  של רדיפה והישרדות, המסופר מתוך התעודות שהותירו אחריהם.</p>
 </header>
 
 <main>
 
   <nav class="toc">
-    <h2>Contents</h2>
+    <h2>תוכן העניינים</h2>
     <ol>
-      <li><a href="#origins">Origins in Bohemia</a></li>
-      <li><a href="#pick">The Pick Line — Lichtenstadt &amp; Karlsbad</a></li>
-      <li><a href="#weiss">The Weiss Line — Silesia &amp; Vienna</a></li>
-      <li><a href="#union">A Marriage of Two Worlds</a></li>
-      <li><a href="#persecution">Persecution &amp; Flight</a></li>
-      <li><a href="#deportation">Deportation</a></li>
-      <li><a href="#survival">A Child Alone — Survival &amp; a New Land</a></li>
-      <li><a href="#memory">Remembrance</a></li>
-      <li><a href="#tree">The Family Tree</a></li>
-      <li><a href="#sources">Sources &amp; References</a></li>
+      <li><a href="#origins">שורשים בבוהמיה</a></li>
+      <li><a href="#pick">שושלת פיק — ליכטנשטדט וקרלסבד</a></li>
+      <li><a href="#weiss">שושלת ווייס — שלזיה ווינה</a></li>
+      <li><a href="#union">נישואין בין שני עולמות</a></li>
+      <li><a href="#persecution">רדיפה ומנוסה</a></li>
+      <li><a href="#deportation">הגירוש</a></li>
+      <li><a href="#survival">ילד לבדו — הישרדות וארץ חדשה</a></li>
+      <li><a href="#memory">זיכרון</a></li>
+      <li><a href="#tree">אילן היוחסין</a></li>
+      <li><a href="#sources">מקורות והפניות</a></li>
     </ol>
   </nav>
 
   <!-- 1 -->
   <section class="chapter" id="origins">
-    <div class="chap-num">Chapter One</div>
-    <h2>Origins in Bohemia</h2>
-    <p class="place-era">The Kingdom of Bohemia, 18th–19th centuries</p>
-    <p class="dropcap">The Pick family belonged to the old Jewish communities of the Czech lands.
-    They appear in the historical record as early as the <strong>1793 Bohemian census</strong>, where a
-    Pick household — a wool trader, his wife and children — is recorded in the Jewish quarter
-    (Židovské Město) of Prague.<sup class="ref"><a href="#s1">1</a></sup> Whether by direct line or
-    by kinship, the name marks a family long rooted in Bohemia, generations before the events at the
-    heart of this history.</p>
-    <p>By the later nineteenth century the family had settled in the spa region of western Bohemia,
-    in the small town of <strong>Lichtenstadt</strong> — today Hroznětín — a short distance from the
-    famous spa city of Karlsbad (Karlovy Vary). It is there that the story comes into sharp focus.</p>
+    <div class="chap-num">פרק ראשון</div>
+    <h2>שורשים בבוהמיה</h2>
+    <p class="place-era">ממלכת בוהמיה, המאות ה־18–19</p>
+    <p>משפחת פיק השתייכה לקהילות היהודיות הוותיקות של הארצות הצ׳כיות. היא מופיעה בתיעוד ההיסטורי
+    כבר <strong>במפקד האוכלוסין הבוהמי משנת 1793</strong>, שבו נרשם משק בית של משפחת פיק — סוחר צמר,
+    אשתו וילדיו — ברובע היהודי של פראג.<sup class="ref"><a href="#s1">1</a></sup> בין אם בקו ישיר ובין
+    אם בקרבה משפחתית, השם מעיד על משפחה מושרשת עמוק בבוהמיה, דורות רבים לפני האירועים העומדים במרכז
+    תולדות אלה.</p>
+    <p>לקראת סוף המאה התשע־עשרה השתקעה המשפחה באזור המרפא של מערב בוהמיה, בעיירה הקטנה
+    <strong>ליכטנשטדט</strong> — כיום הרוזנייטין — לא הרחק מעיר המרפא הנודעת קרלסבד (קרלובי וארי).
+    שם מתחדד הסיפור ומתמקד.</p>
   </section>
 
   <div class="divider">✦</div>
 
   <!-- 2 -->
   <section class="chapter" id="pick">
-    <div class="chap-num">Chapter Two</div>
-    <h2>The Pick Line</h2>
-    <p class="place-era">Lichtenstadt &amp; Karlsbad, Bohemia · 1880s–1930s</p>
-    <p class="dropcap">At house number 34 in Lichtenstadt lived <strong>Sebald Pick</strong>, a
-    merchant (<em>Kaufmann</em>), and his wife <strong>Flora</strong>, née Wohl, who came from
-    Lobositz (Lovosice) in the Leitmeritz district. Theirs was a family touched early by loss: a
-    daughter, <strong>Fanni</strong>, died in 1880 at the age of six, and her burial was recorded in
-    the Jewish register of the community.<sup class="ref"><a href="#s2">2</a></sup></p>
-    <p>On <strong>22 June 1886</strong>, in the same house at Lichtenstadt no. 34, Sebald and Flora
-    had a son: <strong>Ezechiel Pick</strong>.<sup class="ref"><a href="#s3">3</a></sup> He would grow
-    up to be a merchant like his father, doing business in Hroznětín.</p>
+    <div class="chap-num">פרק שני</div>
+    <h2>שושלת פיק</h2>
+    <p class="place-era">ליכטנשטדט וקרלסבד, בוהמיה · שנות ה־1880 עד ה־1930</p>
+    <p>בבית מספר 34 בליכטנשטדט התגורר <strong>סבלד פיק</strong>, סוחר (<em>Kaufmann</em>), ואשתו
+    <strong>פלורה</strong> לבית וול, שמוצאה מלובוזיץ (לובוסיצה) שבמחוז לייטמריץ. משפחתם נגעה באובדן מוקדם:
+    בת, <strong>פאני</strong>, נפטרה בשנת 1880 בגיל שש, וקבורתה נרשמה בפנקס הקהילה
+    היהודית.<sup class="ref"><a href="#s2">2</a></sup></p>
+    <p>ב־<strong>22 ביוני 1886</strong>, באותו בית בליכטנשטדט מס׳ 34, נולד לסבלד ופלורה בן:
+    <strong>יחזקאל (אֶצֶכיאל) פיק</strong>.<sup class="ref"><a href="#s3">3</a></sup> הוא גדל להיות סוחר
+    כאביו, ועסק במסחר בהרוזנייטין.</p>
 
-    <h3>A name, and the authorities who kept it</h3>
-    <p>Ezechiel's birth record carries an unusual and telling detail. At some point the second given
-    name <strong>"Mathias"</strong> was added, in brackets, beside his name. In 1906 the Imperial-Royal
-    Governor's Office in Prague ruled that this addition had been unauthorized.<sup class="ref"><a href="#s3">3</a></sup>
-    But the matter did not end there. On <strong>14 April 1931</strong>, the District Authority
-    (<em>Bezirkshauptmannschaft</em>) in Karlsbad — together with the Jewish registry authority —
-    formally recorded that the man registered as Ezechiel Pick <em>bears the given name Mathias</em>,
-    reconciling his civil and religious identity at last.<sup class="ref"><a href="#s3">3</a></sup></p>
+    <h3>שם, והרשויות ששמרו עליו</h3>
+    <p>בתעודת הלידה של יחזקאל נושא פרט יוצא דופן ורב־משמעות. בשלב מסוים נוסף לצד שמו, בסוגריים, שם פרטי
+    שני — <strong>"מתיאס"</strong>. בשנת 1906 קבע משרד המושל הקיסרי־מלכותי בפראג כי התוספת נעשתה שלא
+    כדין.<sup class="ref"><a href="#s3">3</a></sup> אך בכך לא תם העניין. ב־<strong>14 באפריל 1931</strong>
+    רשמה רשות המחוז (<em>Bezirkshauptmannschaft</em>) בקרלסבד — יחד עם רשות הרישום היהודית — באופן
+    רשמי כי האיש הרשום כיחזקאל פיק <em>נושא את השם הפרטי מתיאס</em>, ובכך יישבה סוף־סוף את זהותו האזרחית
+    והדתית.<sup class="ref"><a href="#s3">3</a></sup></p>
     <blockquote>
-      "The person registered here as Ezechiel Pick … bears the given name Mathias."
-      <cite>— Marginal note in the birth register, dated 14 April 1931, signed by the district rabbi</cite>
+      "האדם הרשום כאן כיחזקאל פיק … נושא את השם הפרטי מתיאס."
+      <cite>— הערת שוליים בפנקס הלידות, מיום 14 באפריל 1931, בחתימת רב המחוז</cite>
     </blockquote>
-    <p>Beyond the personal detail, these entries tell us something important: across more than four
-    decades — 1886, 1906, 1931 — the civil and religious authorities of Austria-Hungary and then of
-    Czechoslovakia kept and maintained this family's records. Ezechiel Mathias Pick was a man known to
-    the state, embedded in the civil life of the Bohemian lands. It is why he appears in later documents
-    under both names, Ezechiel and Mathias — one person, one identity, twice recorded.</p>
+    <p>מעֵבר לפרט האישי, רשומות אלו מלמדות דבר חשוב: לאורך למעלה מארבעה עשורים — 1886, 1906, 1931 —
+    שמרו וניהלו הרשויות האזרחיות והדתיות של אוסטרו־הונגריה ולאחר מכן של צ׳כוסלובקיה את תעודות המשפחה הזו.
+    יחזקאל מתיאס פיק היה אדם המוכר למדינה, מושרש בחיים האזרחיים של הארצות הבוהמיות. משום כך הוא מופיע
+    בתעודות מאוחרות יותר תחת שני השמות — יחזקאל ומתיאס — אדם אחד, זהות אחת, שנרשמה פעמיים.</p>
   </section>
 
   <div class="divider">✦</div>
 
   <!-- 3 -->
   <section class="chapter" id="weiss">
-    <div class="chap-num">Chapter Three</div>
-    <h2>The Weiss Line</h2>
-    <p class="place-era">Freudenthal, Austrian Silesia &amp; Vienna · 1878–1913</p>
-    <p class="dropcap">While the Picks were merchants of the Bohemian spa country, the other side of the
-    family came from the railways and the imperial capital. <strong>Adolf Weiss</strong>, born in Krems
-    on the Danube in 1878, was a railway official — in time a <em>station master</em> of the
-    Imperial-Royal State Railways — stationed at <strong>Freudenthal</strong> (Bruntál) in Austrian
-    Silesia.<sup class="ref"><a href="#s4">4</a></sup></p>
-    <p>In Vienna, in 1902, he married <strong>Rosalie Prinz</strong>, born in the Ottakring district of
-    the city in 1879, a daughter of Nathan Prinz and Regina Schnitzer.<sup class="ref"><a href="#s5">5</a></sup>
-    The couple raised their family in Freudenthal, where the railway ran. Their children included
-    Leopold (1905), Gustav (1909), and a daughter born on <strong>3 February 1913</strong> —
-    <strong>Else</strong> (Elsa) Weiss.<sup class="ref"><a href="#s6">6</a></sup></p>
-    <p>It is Else who joins the two families together — and it is her brother <strong>Leopold</strong>
-    who, decades later, would become the keeper of their memory.</p>
+    <div class="chap-num">פרק שלישי</div>
+    <h2>שושלת ווייס</h2>
+    <p class="place-era">פרוידנטל, שלזיה האוסטרית, ווינה · 1878–1913</p>
+    <p>בעוד שבני פיק היו סוחרים בארץ המרפא הבוהמית, הצד השני של המשפחה בא מן הרכבות ומבירת הקיסרות.
+    <strong>אדולף ווייס</strong>, יליד קרמס שעל הדנובה בשנת 1878, היה פקיד רכבת — ועם הזמן
+    <em>מנהל תחנה</em> ברכבות המדינה הקיסריות־מלכותיות — ששירת ב<strong>פרוידנטל</strong> (ברונטל)
+    שבשלזיה האוסטרית.<sup class="ref"><a href="#s4">4</a></sup></p>
+    <p>בווינה, בשנת 1902, נשא לאישה את <strong>רוזליה פרינץ</strong>, ילידת רובע אוטאקרינג שבעיר בשנת
+    1879, בתם של נתן פרינץ ורגינה שניצר.<sup class="ref"><a href="#s5">5</a></sup> בני הזוג גידלו את
+    משפחתם בפרוידנטל, שם עברה הרכבת. בין ילדיהם: לאופולד (1905), גוסטב (1909), ובת שנולדה
+    ב־<strong>3 בפברואר 1913</strong> — <strong>אלזה (אֶלְזָה) ווייס</strong>.<sup class="ref"><a href="#s6">6</a></sup></p>
+    <p>אלזה היא המחברת בין שתי המשפחות — ואחיה <strong>לאופולד</strong> הוא זה שכעבור עשורים יהפוך לשומר
+    זיכרונם.</p>
   </section>
 
   <div class="divider">✦</div>
 
   <!-- 4 -->
   <section class="chapter" id="union">
-    <div class="chap-num">Chapter Four</div>
-    <h2>A Marriage of Two Worlds</h2>
-    <p class="place-era">Karlsbad · 1930s</p>
-    <p class="dropcap">Ezechiel Mathias Pick, the merchant of Hroznětín, married Else Weiss, the
-    station master's daughter from Silesia. On <strong>6 February 1937</strong>, in Karlsbad
-    (Karlovy Vary), their son was born: <strong>Liebermann Pick</strong>.<sup class="ref"><a href="#s7">7</a></sup></p>
-    <p>The birth was entered in the civil register, naming both parents — Ezechiel Pick, born 1886 in
-    Hroznětín, and Else née Weiss, born 1913 in Bruntál.<sup class="ref"><a href="#s7">7</a></sup> A
-    family of three, in a prosperous spa town, on the eve of catastrophe. The child was little more than
-    a year old when the world the family had known began to close around them.</p>
+    <div class="chap-num">פרק רביעי</div>
+    <h2>נישואין בין שני עולמות</h2>
+    <p class="place-era">קרלסבד · שנות ה־1930</p>
+    <p>יחזקאל מתיאס פיק, הסוחר מהרוזנייטין, נשא לאישה את אלזה ווייס, בתו של מנהל התחנה משלזיה.
+    ב־<strong>6 בפברואר 1937</strong>, בקרלסבד (קרלובי וארי), נולד בנם:
+    <strong>ליברמן פיק</strong>.<sup class="ref"><a href="#s7">7</a></sup></p>
+    <p>הלידה נרשמה בפנקס האזרחי, ושמות שני ההורים צוינו בה — יחזקאל פיק, יליד 1886 בהרוזנייטין, ואלזה
+    לבית ווייס, ילידת 1913 בברונטל.<sup class="ref"><a href="#s7">7</a></sup> משפחה בת שלוש נפשות, בעיר
+    מרפא משגשגת, ערב האסון. הילד היה בקושי בן שנה כאשר העולם שהכירה המשפחה החל להיסגר סביבם.</p>
   </section>
 
   <div class="divider">✦</div>
 
   <!-- 5 -->
   <section class="chapter" id="persecution">
-    <div class="chap-num">Chapter Five</div>
-    <h2>Persecution &amp; Flight</h2>
-    <p class="place-era">Sudetenland → Slovakia → Hungary · 1938–1944</p>
-    <p class="dropcap">In the autumn of 1938 the Sudetenland — the German-speaking borderlands that
-    included Karlsbad — was annexed by Nazi Germany. For the region's Jews, dispossession followed
-    quickly. On <strong>14 September 1940</strong>, the official Nazi gazette, the
-    <em>Deutscher Reichsanzeiger</em>, published lists of Jews of the Karlsbad district whose property
-    and rights were confiscated for the German Reich. Among the names:
-    <strong>"Ezechiel Pick, born 22 June 1886 in Lichtenstadt."</strong><sup class="ref"><a href="#s8">8</a></sup></p>
-    <p>Stripped of home and livelihood, the family fled. Their path led out of Bohemia southward —
-    to <strong>Lučenec</strong> in Slovakia, where, according to family testimony recorded after the war,
-    Mathias Pick lived under the protection of the local rabbi.<sup class="ref"><a href="#s9">9</a></sup>
-    From there the road led onward to <strong>Budapest</strong>. It was a flight shared by countless
-    families of the region, scattering ahead of the deportations — and it is why the family's traces
-    appear afterward across three countries: born in Bohemia, sheltered in Slovakia, deported from Hungary.</p>
+    <div class="chap-num">פרק חמישי</div>
+    <h2>רדיפה ומנוסה</h2>
+    <p class="place-era">חבל הסודטים ← סלובקיה ← הונגריה · 1938–1944</p>
+    <p>בסתיו 1938 סופח חבל הסודטים — אזורי הספר דוברי הגרמנית שכללו את קרלסבד — לגרמניה הנאצית.
+    ליהודי האזור באה נישול מהיר. ב־<strong>14 בספטמבר 1940</strong> פרסם העיתון הרשמי הנאצי,
+    ה־<em>Deutscher Reichsanzeiger</em>, רשימות של יהודי מחוז קרלסבד שרכושם וזכויותיהם הוחרמו לטובת הרייך
+    הגרמני. בין השמות: <strong>"יחזקאל פיק, יליד 22 ביוני 1886 בליכטנשטדט."</strong><sup class="ref"><a href="#s8">8</a></sup></p>
+    <p>מנושלת מביתה ומפרנסתה, נמלטה המשפחה. דרכה הובילה דרומה מבוהמיה — אל <strong>לוצֶ׳נֶץ</strong>
+    שבסלובקיה, שם, על פי עדות משפחתית שנרשמה לאחר המלחמה, חי מתיאס פיק בחסות הרב
+    המקומי.<sup class="ref"><a href="#s9">9</a></sup> משם הובילה הדרך הלאה אל <strong>בודפשט</strong>.
+    זו הייתה מנוסה שחלקו עמה אינספור משפחות מן האזור, שנפוצו לפני הגירושים — וזו הסיבה שעקבות המשפחה
+    מופיעים לאחר מכן בשלוש ארצות: נולד בבוהמיה, מצא מקלט בסלובקיה, גורש מהונגריה.</p>
   </section>
 
   <div class="divider">✦</div>
 
   <!-- 6 -->
   <section class="chapter" id="deportation">
-    <div class="chap-num">Chapter Six</div>
-    <h2>Deportation</h2>
-    <p class="place-era">Budapest &amp; Kistarcsa, Hungary · 1944</p>
-    <p class="dropcap">In 1944, after the German occupation of Hungary, the machinery of deportation
-    reached the family. A Hungarian transfer list dated <strong>20 May 1944</strong> records the men
-    moved to the <strong>Kistarcsa internment camp</strong> outside Budapest. Two names appear together
-    on that list: <strong>Ezechiel Pick</strong>, born 1886 in Lichtenstadt, and his young son
-    <strong>Liebermann Pick</strong>, born 1937 in Karlsbad — father and child, deported side by
-    side.<sup class="ref"><a href="#s10">10</a></sup></p>
-    <p>Else, the mother, did not reach the camps. According to her brother Leopold's later account, she
-    was <strong>shot at the railway station in Budapest</strong> during a transport.<sup class="ref"><a href="#s9">9</a></sup>
-    Of the family of three that had lived in Karlsbad seven years before, only the child would survive.</p>
+    <div class="chap-num">פרק שישי</div>
+    <h2>הגירוש</h2>
+    <p class="place-era">בודפשט וקישטרצה, הונגריה · 1944</p>
+    <p>בשנת 1944, לאחר הכיבוש הגרמני של הונגריה, הגיעה מכונת הגירוש אל המשפחה. רשימת העברה הונגרית מיום
+    <strong>20 במאי 1944</strong> מתעדת את הגברים שהועברו למחנה המעצר <strong>קישטרצה</strong> שליד בודפשט.
+    שני שמות מופיעים יחד ברשימה זו: <strong>יחזקאל פיק</strong>, יליד 1886 בליכטנשטדט, ובנו הצעיר
+    <strong>ליברמן פיק</strong>, יליד 1937 בקרלסבד — אב וילד, מגורשים זה לצד זה.<sup class="ref"><a href="#s10">10</a></sup></p>
+    <p>אלזה, האם, לא הגיעה אל המחנות. על פי עדותו המאוחרת של אחיה לאופולד, היא <strong>נורתה בתחנת הרכבת
+    בבודפשט</strong> במהלך אחד המשלוחים.<sup class="ref"><a href="#s9">9</a></sup> מן המשפחה בת שלוש
+    הנפשות שחיה בקרלסבד שבע שנים קודם לכן, רק הילד ישרוד.</p>
   </section>
 
   <div class="divider">✦</div>
 
   <!-- 7 -->
   <section class="chapter" id="survival">
-    <div class="chap-num">Chapter Seven</div>
-    <h2>A Child Alone</h2>
-    <p class="place-era">Displaced-persons camps, Germany → the Land of Israel · 1945–1947</p>
-    <p class="dropcap">The boy survived. Orphaned and alone, he emerged from the war in the
-    displaced-persons system of occupied Germany — passing through camps and children's homes at
-    Leipheim, Bayerisch-Gmain, Bergen-Belsen and Hamburg-Blankenese.<sup class="ref"><a href="#s11">11</a></sup>
-    In the intake records his parents' fate is marked simply as unknown; the surviving papers describe a
-    healthy, resilient child who spoke Hungarian.<sup class="ref"><a href="#s12">12</a></sup></p>
-    <p>His registration documents variously name him as Czechoslovak and as Hungarian — the twin traces
-    of a Bohemian birth and a Hungarian flight.<sup class="ref"><a href="#s11">11</a></sup> Taken in hand
-    by the Jewish Agency and the Youth Aliyah movement, he was examined, found fit, and prepared for
-    emigration to the Land of Israel.<sup class="ref"><a href="#s12">12</a></sup></p>
+    <div class="chap-num">פרק שביעי</div>
+    <h2>ילד לבדו</h2>
+    <p class="place-era">מחנות עקורים בגרמניה ← ארץ ישראל · 1945–1947</p>
+    <p>הילד שרד. יתום ולבדו, יצא מן המלחמה אל מערכת העקורים של גרמניה הכבושה — עבר במחנות ובבתי ילדים
+    בלייפהיים, בבאייריש־גמאין, בברגן־בלזן ובהמבורג־בלנקנזה.<sup class="ref"><a href="#s11">11</a></sup>
+    בתעודות הקליטה גורל הוריו מצוין פשוט כבלתי ידוע; הניירת ששרדה מתארת ילד בריא וחסון שדיבר
+    הונגרית.<sup class="ref"><a href="#s12">12</a></sup></p>
+    <p>תעודות הרישום שלו מכנות אותו לסירוגין כצ׳כוסלובקי וכהונגרי — שני עקבותיה של לידה בוהמית ומנוסה
+    הונגרית.<sup class="ref"><a href="#s11">11</a></sup></p>
+
+    <h3>בלנקנזה</h3>
+    <p>תחנתו האחרונה באירופה הייתה <strong>המבורג־בלנקנזה</strong>, על גדות נהר האֶלבֶּה. שם, בווילה על
+    הנהר שהוסבה לבית עבור ילדים יהודים ניצולים, ריכזה תנועת עליית הנוער את יתומי המלחמה והכינה אותם
+    לחיים חדשים בארץ ישראל. בבלנקנזה נלקח הילד באופן רשמי לחסות הסוכנות היהודית: נרשם, טופל,
+    וב־<strong>17 ביוני 1947</strong> נבדק על ידי רופא שקבע כי הוא כשיר לעלייה.<sup class="ref"><a href="#s12">12</a></sup>
+    סיפורו בבית הילדים בבלנקנזה מסופר בהרחבה רבה יותר בספר <em>דובדבנים על האֶלבֶּה</em> (<em>Cherries on the Elbe</em>).<sup class="ref"><a href="#s14">14</a></sup></p>
     <blockquote>
-      Is the applicant, in his physical and mental condition, suited for the Aliyah? — <em>Yes.</em>
-      <cite>— Jewish Agency medical certificate, Blankenese, 17 June 1947</cite>
+      האם המועמד כשיר, במצבו הגופני והנפשי, לעלייה? — <em>כן.</em>
+      <cite>— תעודה רפואית של הסוכנות היהודית, בלנקנזה, 17 ביוני 1947</cite>
     </blockquote>
-    <p>On <strong>20 July 1947</strong>, aboard the ship <strong>Providence</strong>, a nine-year-old
-    listed among the unaccompanied children reached the shores of the Land of
-    Israel.<sup class="ref"><a href="#s13">13</a></sup> He was received at a children's home on Mount
-    Carmel and given a new life and, in time, a new name. The last of the Karlsbad family had come
-    through.</p>
+    <p>ב־<strong>20 ביולי 1947</strong>, על סיפון האנייה <strong>"פרובידנס"</strong>, הגיע אל חופי
+    ארץ ישראל ילד בן תשע, רשום בין הילדים הבלתי מלווים.<sup class="ref"><a href="#s13">13</a></sup> הוא
+    נקלט בבית ילדים על הר הכרמל. אחרון בני משפחת קרלסבד צלח את הדרך.</p>
+
+    <h3>שם חדש</h3>
+    <p>בארצו החדשה החל הילד חיים חדשים, ועמם נטל שם חדש. ליברמן פיק — יליד עיר המרפא קרלסבד, יתום
+    השואה, שנישא על פני יבשת שלמה — הפך ל<strong>משה ליברמן</strong>.<sup class="ref"><a href="#s7">7</a></sup>
+    שם המשפחה פיק, שנשאו סוחרי בוהמיה מליכטנשטדט במשך דורות, נטמע בצורתו העברית <em>ליברמן</em>; ותחת
+    שם זה תגדל משפחתו־שלו בישראל בעשורים שיבואו.</p>
   </section>
 
   <div class="divider">✦</div>
 
   <!-- 8 -->
   <section class="chapter" id="memory">
-    <div class="chap-num">Chapter Eight</div>
-    <h2>Remembrance</h2>
-    <p class="place-era">Munich · 1960</p>
-    <p class="dropcap">Fifteen years after the war, in 1960, <strong>Leopold Weiss</strong> — Else's
-    brother, an uncle who had survived — sat down in Munich to write to the International Tracing Service
-    at Arolsen. He sought official word of his lost relatives: his brother-in-law
-    <strong>Mathias Pick</strong> and his sister <strong>Else Pick, née Weiss</strong>.<sup class="ref"><a href="#s9">9</a></sup></p>
-    <p>His letter, careful and precise, set down what he knew: where they were born, where they had
-    fled, and how they were lost. It is thanks to that act of remembrance that the threads of this family
-    — the Bohemian merchant, the Silesian station master's daughter, the orphaned child — can be drawn
-    together today into a single story. This history is written in their memory.</p>
+    <div class="chap-num">פרק שמיני</div>
+    <h2>זיכרון</h2>
+    <p class="place-era">מינכן · 1960</p>
+    <p>חמש־עשרה שנה לאחר המלחמה, בשנת 1960, ישב <strong>לאופולד ווייס</strong> — אחיה של אלזה, דוד ששרד —
+    לכתוב במינכן אל השירות הבינלאומי לאיתור נעדרים (ITS) בארולסן. הוא ביקש מידע רשמי על קרוביו האבודים:
+    גיסו <strong>מתיאס פיק</strong> ואחותו <strong>אלזה פיק, לבית ווייס</strong>.<sup class="ref"><a href="#s9">9</a></sup></p>
+    <p>מכתבו, מדוד ומדויק, העלה על הכתב את שידע: היכן נולדו, לאן נמלטו, וכיצד אבדו. הודות לאותו מעשה של
+    זיכרון ניתן היום לשזור יחד את חוטי המשפחה הזו — הסוחר הבוהמי, בתו של מנהל התחנה השלזי, הילד היתום —
+    לכדי סיפור אחד. תולדות אלה נכתבות לזכרם.</p>
   </section>
 
   <div class="divider">✦</div>
 
   <!-- Family tree -->
   <section class="chapter" id="tree">
-    <div class="chap-num">Appendix</div>
-    <h2>The Family Tree</h2>
-    <p>Three generations, as established by the records cited below.</p>
+    <div class="chap-num">נספח</div>
+    <h2>אילן היוחסין</h2>
+    <p>שלושה דורות, כפי שנקבעו על פי המקורות המצוינים להלן.</p>
     <div class="tree">
 <pre>
         THE PICK LINE                          THE WEISS LINE
+        (שושלת פיק)                            (שושלת ווייס)
 
    Sebald Pick ── Flora Wohl            Adolf Weiss ─── Rosalie Prinz
-   (merchant,      (of Lobositz)        (b. Krems 1878,   (b. Vienna 1879)
-    Lichtenstadt #34)                    station master)
+   (סבלד פיק,     (פלורה וול)           (אדולף ווייס,    (רוזליה פרינץ)
+    ליכטנשטדט #34)                        מנהל תחנה)
         │                                       │
-        ├── Fanni Pick (1874–1880)              ├── Leopold Weiss (b. 1905)
-        │                                       ├── Gustav Weiss (b. 1909)
+        ├── Fanni Pick (פאני, 1874–1880)        ├── Leopold Weiss (לאופולד, 1905)
+        │                                       ├── Gustav Weiss (גוסטב, 1909)
         └── EZECHIEL (MATHIAS) PICK             └── ELSE (ELSA) WEISS
+            יחזקאל (מתיאס) פיק                       אלזה ווייס
             b. 22 Jun 1886, Lichtenstadt            b. 3 Feb 1913, Freudenthal
-            merchant in Hroznětín                   │
                     │                               │
                     └───────────── married ────────┘
                                     │
-                          LIEBERMANN PICK
-                          b. 6 Feb 1937, Karlsbad (Karlovy Vary)
-                          survived; emigrated to the Land of Israel, 1947
+                          LIEBERMANN PICK (ליברמן פיק)
+                          → Moshe Liberman (משה ליברמן)
+                          b. 6 Feb 1937, Karlsbad (קרלובי וארי)
+                          שרד; עלה לארץ ישראל, 1947
 </pre>
     </div>
   </section>
 
   <!-- Sources -->
   <section class="sources" id="sources">
-    <h2>Sources &amp; References</h2>
-    <p style="font-size:0.92rem;color:var(--ink-soft);">This history is drawn from primary archival
-    records. The documents themselves are held privately; the references below identify each source.</p>
+    <h2>מקורות והפניות</h2>
+    <p style="font-size:0.98rem;color:var(--ink-soft);">תולדות אלה מבוססות על תעודות ארכיוניות ראשוניות.
+    התעודות עצמן שמורות באופן פרטי; ההפניות שלהלן מזהות כל מקור.</p>
     <ol>
-      <li id="s1"><span class="archive">1793 Bohemian Census</span> — Pick household, Jewish quarter of Prague. JewishGen / Museum of Jewish Heritage databases.</li>
-      <li id="s2"><span class="archive">Jewish death register, Lichtenstadt, 1880</span> — burial record of Fanni Pick, daughter of Sebald Pick and Flora Wohl. Jewish registers of Bohemia, Czech National Archive.</li>
-      <li id="s3"><span class="archive">Jewish birth register, Lichtenstadt, 1886</span> — birth of Ezechiel Pick (Lichtenstadt no. 34), with marginal administrative annotations of 1906 (k.k. Statthalterei Prague, Z. 203.516) and 14 April 1931 (Bezirkshauptmannschaft Karlsbad, file Zl. 115). Jewish registers of Bohemia, Czech National Archive.</li>
-      <li id="s4"><span class="archive">Birth register, Freudenthal (Bruntál)</span> — record of the Weiss family; Adolf Weiss, railway official. Silesian civil/Jewish registers.</li>
-      <li id="s5"><span class="archive">Vienna birth records</span> — Rosalie Prinz (b. Vienna-Ottakring, 1879), daughter of Nathan Prinz and Regina Schnitzer; marriage of Adolf Weiss and Rosalie Prinz, Vienna 1902. JewishGen Vienna databases.</li>
-      <li id="s6"><span class="archive">Birth register, Freudenthal, 1913</span> — birth of Else (Elsa) Weiss, 3 February 1913, daughter of Adolf Weiss and Rosalie Prinz.</li>
-      <li id="s7"><span class="archive">Civil birth certificate (Rodný list), Karlovy Vary</span> — birth of Liebermann Pick, 6 February 1937, Karlovy Vary; father Ezechiel Pick, mother Else née Weiss. Register of the matriční obvod Praha 1 (svazek 1909, ročník 1937). Issued by the Czech Republic.</li>
-      <li id="s8"><span class="archive">Deutscher Reichsanzeiger und Preußischer Staatsanzeiger, Nr. 216</span>, 14 September 1940 — confiscation notice naming Ezechiel Pick among Jews of the Karlsbad district.</li>
-      <li id="s9"><span class="archive">International Tracing Service correspondence, Arolsen Archives</span> — letter of Leopold Weiss (Munich, 10 August 1960) concerning Mathias Pick and Else Pick née Weiss (file T/D-813227/228).</li>
-      <li id="s10"><span class="archive">Hungarian internment transfer list</span>, 20 May 1944 — Jewish men transferred to the Kistarcsa auxiliary internment camp, including Ezechiel Pick and Liebermann Pick.</li>
-      <li id="s11"><span class="archive">Displaced-persons registration records</span> — A.E.F. / UNRRA DP-2 registration cards and camp lists (Leipheim; Bayerisch-Gmain Jewish Children's Center, 1947). Arolsen Archives.</li>
-      <li id="s12"><span class="archive">Jewish Agency for Palestine file</span> — personal file of Liebermann Pick (identity card, medical certificate declaring fitness for aliyah, Blankenese, 17 June 1947). Central Zionist Archives; Youth Aliyah / Child &amp; Youth Migration Bureau records.</li>
-      <li id="s13"><span class="archive">Immigrant manifest, ship "Providence,"</span> arriving 20 July 1947 — Jewish Agency Aliyah Department, Haifa; Liberman Pick listed among unaccompanied children. Israeli State Archive.</li>
+      <li id="s1"><span class="archive">מפקד האוכלוסין הבוהמי, 1793</span> — משק בית פיק, הרובע היהודי של פראג. מאגרי JewishGen / מוזיאון המורשת היהודית.</li>
+      <li id="s2"><span class="archive">פנקס פטירות יהודי, ליכטנשטדט, 1880</span> — רישום קבורתה של פאני פיק, בתם של סבלד פיק ופלורה וול. פנקסי הקהילות היהודיות של בוהמיה, הארכיון הלאומי הצ׳כי.</li>
+      <li id="s3"><span class="archive">פנקס לידות יהודי, ליכטנשטדט, 1886</span> — לידת יחזקאל פיק (ליכטנשטדט מס׳ 34), עם הערות מנהליות בשוליים משנת 1906 (משרד המושל הקיסרי־מלכותי בפראג, Z. 203.516) ומ־14 באפריל 1931 (רשות המחוז בקרלסבד, תיק Zl. 115). פנקסי הקהילות היהודיות של בוהמיה, הארכיון הלאומי הצ׳כי.</li>
+      <li id="s4"><span class="archive">פנקס לידות, פרוידנטל (ברונטל)</span> — רישומי משפחת ווייס; אדולף ווייס, פקיד רכבת. פנקסים אזרחיים/יהודיים של שלזיה.</li>
+      <li id="s5"><span class="archive">רשומות לידה מווינה</span> — רוזליה פרינץ (ילידת ווינה־אוטאקרינג, 1879), בתם של נתן פרינץ ורגינה שניצר; נישואי אדולף ווייס ורוזליה פרינץ, ווינה 1902. מאגרי ווינה של JewishGen.</li>
+      <li id="s6"><span class="archive">פנקס לידות, פרוידנטל, 1913</span> — לידת אלזה (אֶלְזָה) ווייס, 3 בפברואר 1913, בתם של אדולף ווייס ורוזליה פרינץ.</li>
+      <li id="s7"><span class="archive">תעודת לידה אזרחית (Rodný list), קרלובי וארי</span> — לידת ליברמן פיק, 6 בפברואר 1937, קרלובי וארי; אב יחזקאל פיק, אם אלזה לבית ווייס. פנקס מחוז הרישום פראג 1 (כרך 1909, שנתון 1937). הונפקה על ידי הרפובליקה הצ׳כית.</li>
+      <li id="s8"><span class="archive">Deutscher Reichsanzeiger und Preußischer Staatsanzeiger, גיליון 216</span>, 14 בספטמבר 1940 — הודעת החרמה המונה את יחזקאל פיק בין יהודי מחוז קרלסבד.</li>
+      <li id="s9"><span class="archive">התכתבות השירות הבינלאומי לאיתור נעדרים (ITS), ארכיון ארולסן</span> — מכתבו של לאופולד ווייס (מינכן, 10 באוגוסט 1960) בעניין מתיאס פיק ואלזה פיק לבית ווייס (תיק T/D-813227/228).</li>
+      <li id="s10"><span class="archive">רשימת העברה הונגרית למעצר</span>, 20 במאי 1944 — גברים יהודים שהועברו למחנה המעצר קישטרצה, ובהם יחזקאל פיק וליברמן פיק.</li>
+      <li id="s11"><span class="archive">תעודות רישום של עקורים (DP)</span> — כרטיסי רישום DP-2 של A.E.F. / UNRRA ורשימות מחנות (לייפהיים; מרכז הילדים היהודי בבאייריש־גמאין, 1947). ארכיון ארולסן.</li>
+      <li id="s12"><span class="archive">תיק הסוכנות היהודית לארץ ישראל</span> — תיקו האישי של ליברמן פיק (תעודת זהות, תעודה רפואית הקובעת כשירות לעלייה, בלנקנזה, 17 ביוני 1947). הארכיון הציוני המרכזי; רשומות עליית הנוער / המדור לילד ולנוער.</li>
+      <li id="s13"><span class="archive">רשימת עולים, אניית "פרובידנס"</span>, הגיעה 20 ביולי 1947 — מחלקת העלייה של הסוכנות היהודית, חיפה; ליברמן פיק רשום בין הילדים הבלתי מלווים. ארכיון המדינה (ישראל).</li>
+      <li id="s14"><span class="archive">ספר: <em>דובדבנים על האֶלבֶּה</em> (<em>Cherries on the Elbe</em>)</span> — תיאור בית הילדים היהודי בהמבורג־בלנקנזה, שם טופל הילד לפני עלייתו. <em>(פרטים ביבליוגרפיים מלאים יאומתו.)</em></li>
     </ol>
   </section>
 
 </main>
 
 <footer>
-  <div>A family history compiled from archival records.</div>
-  <div class="note">This account is dedicated to the memory of Ezechiel Mathias Pick and Else Pick,
-  née Weiss, and to all of the family lost in the Shoah. It closes with the survival of their son —
-  whose descendants carry the story forward.</div>
+  <div>תולדות משפחה שנערכו מתוך תעודות ארכיוניות.</div>
+  <div class="note">חיבור זה מוקדש לזכרם של יחזקאל מתיאס פיק ואלזה פיק, לבית ווייס, ולכל בני המשפחה שנספו
+  בשואה. הוא חותם בהישרדות בנם — שצאצאיו נושאים את הסיפור הלאה.</div>
 </footer>
 
 </body>
