@@ -494,6 +494,7 @@
       <span class="ml-item"><span class="ml-dot" style="background:#2f5a86"></span>שורשי ווייס</span>
       <span class="ml-item"><span class="ml-dot" style="background:#8a3a2e"></span>רדיפה וגירוש</span>
       <span class="ml-item"><span class="ml-dot" style="background:#3a7a4a"></span>הישרדות ועלייה</span>
+      <span class="ml-item"><span class="ml-line" style="background:#2f5a86"></span>מסלול משפחת ווייס</span>
       <span class="ml-item"><span class="ml-line" style="background:#8a3a2e"></span>מסלול המנוסה</span>
       <span class="ml-item"><span class="ml-line" style="background:#3a7a4a"></span>מסלול ההישרדות</span>
     </div>
@@ -504,12 +505,9 @@
   <script>
   (function(){
     var map = L.map('family-map', {scrollWheelZoom: false}).setView([50.5, 14.5], 5);
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-      attribution: 'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors',
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+      attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, Garmin, HERE, &copy; OpenStreetMap contributors',
       maxZoom: 16
-    }).addTo(map);
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', {
-      maxZoom: 16, pane: 'overlayPane'
     }).addTo(map);
 
     function icon(color) {
@@ -557,6 +555,11 @@
        .bindPopup('<strong>'+p.title+'</strong><br><span style="font-size:0.88rem;line-height:1.5;direction:rtl;text-align:right;display:block">'+p.body+'</span>',
          {maxWidth:280, className:'family-popup'});
     });
+
+    L.polyline([
+      [48.4089,15.6128],[48.2082,16.3738],
+      [48.2082,16.3738],[49.8878,17.4647]
+    ], {color:'#2f5a86', weight:2.5, opacity:0.7, dashArray:'6 4'}).addTo(map);
 
     L.polyline([
       [50.3833,12.8667],[50.2292,12.8712],
