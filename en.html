@@ -563,9 +563,12 @@
   <script>
   (function(){
     var map = L.map('family-map', {scrollWheelZoom: false}).setView([50.5, 14.5], 5);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-      subdomains: 'abcd', maxZoom: 19
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+      attribution: 'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors',
+      maxZoom: 16
+    }).addTo(map);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 16, pane: 'overlayPane'
     }).addTo(map);
 
     function icon(color) {
@@ -596,18 +599,18 @@
       {ll:[48.3306,19.6672], color:danger, title:'Lučenec, Slovakia',
        body:'The Pick family fled here after the confiscation. Mathias Pick lived under the protection of the local rabbi until deportation.'},
       {ll:[47.4979,19.0402], color:danger, title:'Budapest',
-       body:'End of the family's flight. Else Pick is reported to have been shot at the railway station during a transport. Father and son deported onward.'},
+       body:'End of the family\'s flight. Else Pick is reported to have been shot at the railway station during a transport. Father and son deported onward.'},
       {ll:[47.5583,19.2167], color:danger, title:'Kistarcsa Camp',
        body:'Transfer list of 20 May 1944 records both <strong>Ezechiel Pick</strong> (b. 1886) and his son <strong>Liebermann Pick</strong> (b. 1937) deported here together.'},
       // Survival route
       {ll:[48.4436,10.1327], color:green,  title:'Leipheim DP Camp',
        body:'Liebermann Pick registered as a Displaced Person (DP-2 card no. 459622). Nationality recorded: <strong>Czechoslovak (C.S.R.)</strong>.'},
       {ll:[47.7167,12.7667], color:green,  title:'Bayerisch-Gmain',
-       body:'Jewish Children's Center. Liebermann Pick listed as entry no. 110, born Karlsbad, nationality C.S.R. (March 1947).'},
+       body:'Jewish Children\'s Center. Liebermann Pick listed as entry no. 110, born Karlsbad, nationality C.S.R. (March 1947).'},
       {ll:[52.7622,9.9953],  color:green,  title:'Bergen-Belsen DP Camp',
-       body:'Jewish Agency for Palestine issued the child's identity card here (Card no. 8, British Zone).'},
+       body:'Jewish Agency for Palestine issued the child\'s identity card here (Card no. 8, British Zone).'},
       {ll:[53.5653,9.8228],  color:green,  title:'Hamburg-Blankenese',
-       body:'Youth Aliyah children's home on the Elbe. Liebermann Pick cared for here. Medical certificate issued 17 June 1947 declaring him fit for aliyah. His story is told in <em>Cherries on the Elbe</em>.'},
+       body:'Youth Aliyah children\'s home on the Elbe. Liebermann Pick cared for here. Medical certificate issued 17 June 1947 declaring him fit for aliyah. His story is told in <em>Cherries on the Elbe</em>.'},
       {ll:[32.8183,34.9892], color:green,  title:'Haifa — Mount Carmel',
        body:'Liebermann Pick arrives aboard the ship <em>Providence</em>, 20 July 1947, as an unaccompanied child (manifest entry no. 126). Received at Beit Olim on Mount Carmel.'},
     ];
